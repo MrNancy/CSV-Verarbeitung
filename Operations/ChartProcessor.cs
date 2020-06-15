@@ -15,9 +15,9 @@ namespace CSV_Verarbeitung.Operations
             {
                 foreach(DataGridViewColumn dataGridViewColumn in dataGridView.SelectedColumns)
                 {
-                    if (dataGridViewCell.OwningColumn == dataGridViewColumn && !tempList.Contains(dataGridViewColumn.HeaderText))
+                    if (dataGridViewCell.OwningColumn == dataGridViewColumn && !tempList.Contains(dataGridViewColumn.HeaderText.Replace("●","") + "●" + dataGridViewColumn.Index))
                     {
-                        tempList.Add(dataGridViewColumn.HeaderText);
+                        tempList.Add(dataGridViewColumn.HeaderText.Replace("●", "") + "●" + dataGridViewColumn.Index);
                     }
                 }
             }
@@ -26,7 +26,7 @@ namespace CSV_Verarbeitung.Operations
                 if (string.IsNullOrWhiteSpace(listItem) == false)
                 {
                     Interface.DesignMessageBox(MessageBoxButtons.YesNoCancel, "IntString");
-                    DialogResult dialogResult = MessageBoxAdv.Show("►" + listItem + "◄ " + Environment.NewLine + "Enthält die Spalte Zahlen oder Texte?", "Art wählen", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBoxAdv.Show("►" + listItem.Split('●')[0] + "◄ " + Environment.NewLine + "Enthält die Spalte Zahlen oder Texte?", "Art wählen", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
                     if (dialogResult == DialogResult.Yes)
                     {
                         returnList.Add(listItem + "●zahlen");
@@ -43,27 +43,21 @@ namespace CSV_Verarbeitung.Operations
         {
             if (dataGridView.SelectedColumns.Count > 1)
             {
+                List<string> columns = CheckColumn(dataGridView);
+                foreach (string column in columns)
+                {
+                    string columnText = column.Split('●')[0];
+                    string columnIndex = column.Split('●')[1];
+                    string columnType = column.Split('●')[2];
+                }
+
                 if (diagramType == "tortendiagramm")
                 {
                     // Tortendiagramm
-                    List<string> columns = CheckColumn(dataGridView);
-                    foreach (string column in columns)
-                    {
-                        string columnText = column.Split('●')[0];
-                        string columnType = column.Split('●')[1];
-                        MessageBox.Show(columnText, columnType);
-                    }
                 }
                 else
                 {
                     // Balkendiagramm
-                    List<string> columns = CheckColumn(dataGridView);
-                    foreach(string column in columns)
-                    {
-                        string columnText = column.Split('●')[0];
-                        string columnType = column.Split('●')[1];
-                        MessageBox.Show(columnText, columnType);
-                    }
                 }
             }
             else
