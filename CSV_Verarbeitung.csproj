@@ -149,8 +149,9 @@
     <Compile Include="Operations\ChartProcessor.cs" />
     <Compile Include="Operations\Interface.cs" />
     <Compile Include="Operations\CsvProcessor.cs" />
-    <Compile Include="Operations\DataGridViewOperations.cs" />
+    <Compile Include="Operations\DataGridViewProcessor.cs" />
     <Compile Include="Operations\FadeUI.cs" />
+    <Compile Include="Operations\MessageBoxProcessor.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="About.resx">

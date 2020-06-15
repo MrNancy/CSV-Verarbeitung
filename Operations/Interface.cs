@@ -25,7 +25,7 @@ namespace CSV_Verarbeitung.Operations
             // Alle angegebenen Controls deaktivieren und unsichtbar machen
             if (enabled == true)
             {
-                DesignMessageBox(MessageBoxButtons.OKCancel);
+                MessageBoxProcessor.DesignMessageBox(MessageBoxButtons.OKCancel);
                 DialogResult dialogResult = MessageBoxAdv.Show("Sie haben den Diagramm Modus erfolgriech aktiviert!" +
                     Environment.NewLine +
                     "Wählen Sie nun eine oder mehrere Spalten zur Darstellung in einem Diagramm."+
@@ -92,108 +92,5 @@ namespace CSV_Verarbeitung.Operations
 
             Application.Exit();
         }
-
-
-        #region MessageBoxDesigner & Localizer
-        public static void DesignMessageBox(MessageBoxButtons messageBoxButtons, string type = null)
-        {
-            if (type=="IntString")
-            {
-                LocalizationProvider.Provider = new IntStringLocalizer();
-            }
-            else if (messageBoxButtons == MessageBoxButtons.YesNo)
-            {
-                LocalizationProvider.Provider = new YesNoLocalizer();
-            }
-            else if (messageBoxButtons == MessageBoxButtons.OK)
-            {
-                LocalizationProvider.Provider = new OKLocalizer();
-            }
-            else if (messageBoxButtons == MessageBoxButtons.OKCancel)
-            {
-                LocalizationProvider.Provider = new OKCancelLocalizer();
-            }
-            MessageBoxAdv.MessageBoxStyle = MessageBoxAdv.Style.Office2016;
-            MessageBoxAdv.ApplyAeroTheme = true;
-        }
-        class YesNoLocalizer : ILocalizationProvider
-        {
-            //https://help.syncfusion.com/windowsforms/messagebox/button-parameters
-            public string GetLocalizedString(CultureInfo culture, string name, object obj)
-            {
-
-                switch (name)
-                {
-                    case ResourceIdentifiers.Yes:
-                        return "Ja";
-                    case ResourceIdentifiers.No:
-                        return "Nein";
-                    default:
-                        return string.Empty;
-
-                }
-
-            }
-
-        }
-        class IntStringLocalizer : ILocalizationProvider
-        {
-            //https://help.syncfusion.com/windowsforms/messagebox/button-parameters
-            public string GetLocalizedString(CultureInfo culture, string name, object obj)
-            {
-
-                switch (name)
-                {
-                    case ResourceIdentifiers.Yes:
-                        return "Zahlen";
-                    case ResourceIdentifiers.No:
-                        return "Texte";
-                    default:
-                        return string.Empty;
-
-                }
-
-            }
-
-        }
-        class OKCancelLocalizer : ILocalizationProvider
-        {
-            //https://help.syncfusion.com/windowsforms/messagebox/button-parameters
-            public string GetLocalizedString(CultureInfo culture, string name, object obj)
-            {
-
-                switch (name)
-                {
-                    case ResourceIdentifiers.OK:
-                        return "Okay";
-                    case ResourceIdentifiers.Cancel:
-                        return "Abbrechen";
-                    default:
-                        return string.Empty;
-
-                }
-
-            }
-
-        }
-        class OKLocalizer : ILocalizationProvider
-        {
-            //https://help.syncfusion.com/windowsforms/messagebox/button-parameters
-            public string GetLocalizedString(CultureInfo culture, string name, object obj)
-            {
-
-                switch (name)
-                {
-                    case ResourceIdentifiers.OK:
-                        return "Okay";
-                    default:
-                        return string.Empty;
-
-                }
-
-            }
-
-        }
-        #endregion
     }
 }

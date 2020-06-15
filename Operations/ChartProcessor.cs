@@ -1,4 +1,5 @@
 ﻿using Syncfusion.Windows.Forms;
+using Syncfusion.Windows.Forms.Chart.SvgBase;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -7,49 +8,57 @@ namespace CSV_Verarbeitung.Operations
 {
     class ChartProcessor
     {
-        private static List<string> CheckColumn(DataGridView dataGridView)
+        private static List<string> getSelectedColumns(DataGridView dataGridView)
         {
-            List<string> tempList = new List<string>();
+            bool isUsed = false;
             List<string> returnList = new List<string>();
             foreach (DataGridViewCell dataGridViewCell in dataGridView.SelectedCells)
             {
                 foreach(DataGridViewColumn dataGridViewColumn in dataGridView.SelectedColumns)
                 {
-                    if (dataGridViewCell.OwningColumn == dataGridViewColumn && !tempList.Contains(dataGridViewColumn.HeaderText.Replace("●","") + "●" + dataGridViewColumn.Index))
+                    string headerText = dataGridViewColumn.HeaderText.Replace("●", "");
+
+                    string saveAsNumber = headerText + "●" + dataGridViewColumn.Index + "●zahlen";
+                    string saveAsText = headerText + "●" + dataGridViewColumn.Index + "●texte";
+
+                    if (dataGridViewCell.OwningColumn == dataGridViewColumn && !returnList.Contains(saveAsText) && !returnList.Contains(saveAsNumber))
                     {
-                        tempList.Add(dataGridViewColumn.HeaderText.Replace("●", "") + "●" + dataGridViewColumn.Index);
+                        MessageBoxProcessor.DesignMessageBox(MessageBoxButtons.YesNo, "IntString");
+                        DialogResult dialogResult = MessageBoxAdv.Show("► " + dataGridViewColumn.HeaderText.Replace("●", "") + " ◄ " + Environment.NewLine + "Enthält die Spalte Zahlen oder Texte?", "Art wählen", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        if (dialogResult == DialogResult.Yes)
+                        {
+                            isUsed = true;
+                            returnList.Add(saveAsNumber);
+                        }
+                        else if (dialogResult == DialogResult.No)
+                        {
+                            isUsed = true;
+                            returnList.Add(saveAsText);
+                        }
                     }
-                }
-            }
-            foreach (string listItem in tempList)
-            {
-                if (string.IsNullOrWhiteSpace(listItem) == false)
-                {
-                    Interface.DesignMessageBox(MessageBoxButtons.YesNoCancel, "IntString");
-                    DialogResult dialogResult = MessageBoxAdv.Show("►" + listItem.Split('●')[0] + "◄ " + Environment.NewLine + "Enthält die Spalte Zahlen oder Texte?", "Art wählen", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question);
-                    if (dialogResult == DialogResult.Yes)
+                    if (isUsed == true)
                     {
-                        returnList.Add(listItem + "●zahlen");
-                    }
-                    else if (dialogResult == DialogResult.No)
-                    {
-                        returnList.Add(listItem + "●texte");
+                        MessageBox.Show(dataGridViewCell.Value.ToString());
                     }
                 }
             }
             return returnList;
         }
+        public static List<KeyValuePair<string, DataGridViewCell[]>> getSelectedColumnsValues(List<string> selectedColumns)
+        {
+            List<KeyValuePair<string, DataGridViewCell[]>> selectedColumnsValues = new List<KeyValuePair<string, DataGridViewCell[]>>();
+            foreach (string column in selectedColumns)
+            {
+//                selectedColumnsValues.Add(column, )
+            }
+            return selectedColumnsValues;
+        }
         public static void CreateChart(DataGridView dataGridView, string diagramType)
         {
-            if (dataGridView.SelectedColumns.Count > 1)
+            if (dataGridView.SelectedColumns.Count > 0)
             {
-                List<string> columns = CheckColumn(dataGridView);
-                foreach (string column in columns)
-                {
-                    string columnText = column.Split('●')[0];
-                    string columnIndex = column.Split('●')[1];
-                    string columnType = column.Split('●')[2];
-                }
+                List<string> selectedColumns = getSelectedColumns(dataGridView);
+                List<KeyValuePair<string, DataGridViewCell[]>> getColumnCellsValue = getSelectedColumnsValues(selectedColumns);
 
                 if (diagramType == "tortendiagramm")
                 {
@@ -62,8 +71,8 @@ namespace CSV_Verarbeitung.Operations
             }
             else
             {
-                Interface.DesignMessageBox(MessageBoxButtons.OK);
-                MessageBoxAdv.Show("Wählen Sie mehr als eine Spalte", "Spalte wählen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxProcessor.DesignMessageBox(MessageBoxButtons.OK);
+                MessageBoxAdv.Show("Wählen Sie mindestens eine Spalte", "Spalte wählen", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }

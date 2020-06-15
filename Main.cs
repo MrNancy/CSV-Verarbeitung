@@ -109,7 +109,7 @@ namespace CSV_Verarbeitung
 
         private void WorkspaceDataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            DataGridViewOperations.PaintRowNumbers(workspaceDataGridView, sender, e);
+            DataGridViewProcessor.PaintRowNumbers(workspaceDataGridView, sender, e);
         }
 
         private void ChartButton_Click(object sender, EventArgs e)
@@ -136,17 +136,17 @@ namespace CSV_Verarbeitung
 
         private void ZeileEntfernenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataGridViewOperations.RemoveRow(workspaceDataGridView);
+            DataGridViewProcessor.RemoveRow(workspaceDataGridView);
         }
 
         private void SpalteEntfernenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataGridViewOperations.RemoveColumn(workspaceDataGridView);
+            DataGridViewProcessor.RemoveColumn(workspaceDataGridView);
         }
 
         private void ZeileHinzufügenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            DataGridViewOperations.AddNewRow(workspaceDataGridView);
+            DataGridViewProcessor.AddNewRow(workspaceDataGridView);
         }
 
         private void HinzufügenToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -156,7 +156,7 @@ namespace CSV_Verarbeitung
                 workspaceDataGridView.Columns.Add(toolStripTextBox1.Text, toolStripTextBox1.Text);
                 hinzufügenToolStripMenuItem1.Text = "";
 
-                Interface.DesignMessageBox(MessageBoxButtons.OK);
+                MessageBoxProcessor.DesignMessageBox(MessageBoxButtons.OK);
                 MessageBoxAdv.Show(this, "Spalte erfolgreich hinzugefügt", "Spalte hinzugefügt", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
