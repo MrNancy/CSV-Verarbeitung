@@ -178,22 +178,12 @@ namespace CSV_Verarbeitung
 
         private void KreisdiagrammToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Balkendiagramm erstellen
-            bool isCreated = ChartProcessor.CreateChart(workspaceDataGridView, "balkendiagramm");
-            if (isCreated == true)
-            {
-
-            }
+            ChartProcessor.CreateChart(workspaceDataGridView, "balkendiagramm");
         }
 
         private void TortendiagrammToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            // Tortendiagramm erstellen
-            bool isCreated = ChartProcessor.CreateChart(workspaceDataGridView, "tortendiagramm");
-            if (isCreated == true)
-            {
-
-            }
+            ChartProcessor.CreateChart(workspaceDataGridView, "tortendiagramm");
         }
     }
 }

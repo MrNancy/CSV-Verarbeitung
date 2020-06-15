@@ -95,23 +95,26 @@ namespace CSV_Verarbeitung.Operations
 
 
         #region MessageBoxDesigner & Localizer
-        public static void DesignMessageBox(MessageBoxButtons messageBoxButtons)
+        public static void DesignMessageBox(MessageBoxButtons messageBoxButtons, string type = null)
         {
-            if(messageBoxButtons == MessageBoxButtons.YesNo)
+            if (type=="IntString")
+            {
+                LocalizationProvider.Provider = new IntStringLocalizer();
+            }
+            else if (messageBoxButtons == MessageBoxButtons.YesNo)
             {
                 LocalizationProvider.Provider = new YesNoLocalizer();
             }
-            else if(messageBoxButtons == MessageBoxButtons.OK)
+            else if (messageBoxButtons == MessageBoxButtons.OK)
             {
                 LocalizationProvider.Provider = new OKLocalizer();
             }
-            else if(messageBoxButtons == MessageBoxButtons.OKCancel)
+            else if (messageBoxButtons == MessageBoxButtons.OKCancel)
             {
                 LocalizationProvider.Provider = new OKCancelLocalizer();
             }
             MessageBoxAdv.MessageBoxStyle = MessageBoxAdv.Style.Office2016;
             MessageBoxAdv.ApplyAeroTheme = true;
-
         }
         class YesNoLocalizer : ILocalizationProvider
         {
@@ -125,8 +128,26 @@ namespace CSV_Verarbeitung.Operations
                         return "Ja";
                     case ResourceIdentifiers.No:
                         return "Nein";
-                    case ResourceIdentifiers.Cancel:
-                        return "test";
+                    default:
+                        return string.Empty;
+
+                }
+
+            }
+
+        }
+        class IntStringLocalizer : ILocalizationProvider
+        {
+            //https://help.syncfusion.com/windowsforms/messagebox/button-parameters
+            public string GetLocalizedString(CultureInfo culture, string name, object obj)
+            {
+
+                switch (name)
+                {
+                    case ResourceIdentifiers.Yes:
+                        return "Zahlen";
+                    case ResourceIdentifiers.No:
+                        return "Texte";
                     default:
                         return string.Empty;
 
