@@ -19,7 +19,6 @@ C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\Syncfusion.Tools.Windows.x
 C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\Syncfusion.Grid.Base.xml
 C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\Syncfusion.SpellChecker.Base.xml
 C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\Syncfusion.Grid.Windows.XmlSerializers.dll
-C:\Users\Alexander\Desktop\CSV Verarbeitung\obj\Debug\CSV_Verarbeitung.Form1.resources
 C:\Users\Alexander\Desktop\CSV Verarbeitung\obj\Debug\CSV_Verarbeitung.Properties.Resources.resources
 C:\Users\Alexander\Desktop\CSV Verarbeitung\obj\Debug\CSV_Verarbeitung.csproj.GenerateResource.cache
 C:\Users\Alexander\Desktop\CSV Verarbeitung\obj\Debug\CSV_Verarbeitung.csproj.CoreCompileInputs.cache
@@ -60,3 +59,4 @@ C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\Syncfusion.SfSmithChart.Wi
 C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\Syncfusion.PivotAnalysis.Base.xml
 C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\Syncfusion.PivotChart.Windows.xml
 C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\Syncfusion.SfSmithChart.WinForms.xml
+C:\Users\Alexander\Desktop\CSV Verarbeitung\obj\Debug\CSV_Verarbeitung.Main.resources
