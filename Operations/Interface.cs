@@ -25,8 +25,7 @@ namespace CSV_Verarbeitung.Operations
             // Alle angegebenen Controls deaktivieren und unsichtbar machen
             if (enabled == true)
             {
-                MessageBoxProcessor.DesignMessageBox(MessageBoxButtons.OKCancel);
-                DialogResult dialogResult = MessageBoxAdv.Show("Sie haben den Diagramm Modus erfolgriech aktiviert!" +
+                DialogResult dialogResult = MessageBoxProcessor.Run("Sie haben den Diagramm Modus erfolgriech aktiviert!" +
                     Environment.NewLine +
                     "Wählen Sie nun eine oder mehrere Spalten zur Darstellung in einem Diagramm."+
                     Environment.NewLine+

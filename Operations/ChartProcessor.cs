@@ -8,10 +8,12 @@ namespace CSV_Verarbeitung.Operations
 {
     class ChartProcessor
     {
-        private static List<string> getSelectedColumns(DataGridView dataGridView)
+        private static List<KeyValuePair<string, DataGridViewCell[]>> getSelectedColumnsValues(DataGridView dataGridView)
         {
             bool isUsed = false;
-            List<string> returnList = new List<string>();
+            List<KeyValuePair<string, DataGridViewCell[]>> returnList = new List<KeyValuePair<string, DataGridViewCell[]>>();
+            List<string> columnList = new List<string>();
+
             foreach (DataGridViewCell dataGridViewCell in dataGridView.SelectedCells)
             {
                 foreach(DataGridViewColumn dataGridViewColumn in dataGridView.SelectedColumns)
@@ -21,21 +23,21 @@ namespace CSV_Verarbeitung.Operations
                     string saveAsNumber = headerText + "●" + dataGridViewColumn.Index + "●zahlen";
                     string saveAsText = headerText + "●" + dataGridViewColumn.Index + "●texte";
 
-                    if (dataGridViewCell.OwningColumn == dataGridViewColumn && !returnList.Contains(saveAsText) && !returnList.Contains(saveAsNumber))
+                    if (dataGridViewCell.OwningColumn == dataGridViewColumn && !columnList.Contains(saveAsText) && !columnList.Contains(saveAsNumber))
                     {
-                        MessageBoxProcessor.DesignMessageBox(MessageBoxButtons.YesNo, "IntString");
-                        DialogResult dialogResult = MessageBoxAdv.Show("► " + dataGridViewColumn.HeaderText.Replace("●", "") + " ◄ " + Environment.NewLine + "Enthält die Spalte Zahlen oder Texte?", "Art wählen", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                        DialogResult dialogResult = MessageBoxProcessor.Run("► " + dataGridViewColumn.HeaderText.Replace("●", "") + " ◄ " + Environment.NewLine + "Enthält die Spalte Zahlen oder Texte?", "Art wählen", MessageBoxButtons.YesNo, MessageBoxIcon.Question, "IntString");
                         if (dialogResult == DialogResult.Yes)
                         {
                             isUsed = true;
-                            returnList.Add(saveAsNumber);
+                            columnList.Add(saveAsNumber);
                         }
                         else if (dialogResult == DialogResult.No)
                         {
                             isUsed = true;
-                            returnList.Add(saveAsText);
+                            columnList.Add(saveAsText);
                         }
                     }
+                    // get Values of
                     if (isUsed == true)
                     {
                         MessageBox.Show(dataGridViewCell.Value.ToString());
@@ -44,21 +46,11 @@ namespace CSV_Verarbeitung.Operations
             }
             return returnList;
         }
-        public static List<KeyValuePair<string, DataGridViewCell[]>> getSelectedColumnsValues(List<string> selectedColumns)
-        {
-            List<KeyValuePair<string, DataGridViewCell[]>> selectedColumnsValues = new List<KeyValuePair<string, DataGridViewCell[]>>();
-            foreach (string column in selectedColumns)
-            {
-//                selectedColumnsValues.Add(column, )
-            }
-            return selectedColumnsValues;
-        }
         public static void CreateChart(DataGridView dataGridView, string diagramType)
         {
             if (dataGridView.SelectedColumns.Count > 0)
             {
-                List<string> selectedColumns = getSelectedColumns(dataGridView);
-                List<KeyValuePair<string, DataGridViewCell[]>> getColumnCellsValue = getSelectedColumnsValues(selectedColumns);
+                List<KeyValuePair<string, DataGridViewCell[]>> getColumnCellsValue = getSelectedColumnsValues(dataGridView);
 
                 if (diagramType == "tortendiagramm")
                 {
@@ -71,8 +63,7 @@ namespace CSV_Verarbeitung.Operations
             }
             else
             {
-                MessageBoxProcessor.DesignMessageBox(MessageBoxButtons.OK);
-                MessageBoxAdv.Show("Wählen Sie mindestens eine Spalte", "Spalte wählen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxProcessor.Run("Wählen Sie mindestens eine Spalte", "Spalte wählen", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
     }
