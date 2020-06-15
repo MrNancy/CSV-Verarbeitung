@@ -156,7 +156,7 @@ namespace CSV_Verarbeitung
                 workspaceDataGridView.Columns.Add(toolStripTextBox1.Text, toolStripTextBox1.Text);
                 hinzufügenToolStripMenuItem1.Text = "";
 
-                MessageBoxProcessor.Run("Spalte erfolgreich hinzugefügt", "Spalte hinzugefügt", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBoxProcessor.Show("Spalte erfolgreich hinzugefügt", "Spalte hinzugefügt", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

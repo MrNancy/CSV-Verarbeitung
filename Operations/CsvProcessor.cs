@@ -36,7 +36,7 @@ namespace CSV_Verarbeitung.Operations
 
                 if (File.Exists(outputFile))
                 {
-                    DialogResult dialogResult = MessageBoxProcessor.Run("Möchten Sie die Datei wirklich überschreiben?", "Datei überschreiben", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                    DialogResult dialogResult = MessageBoxProcessor.Show("Möchten Sie die Datei wirklich überschreiben?", "Datei überschreiben", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
                     ;
                     if (dialogResult == DialogResult.Yes)
                     {
@@ -106,7 +106,7 @@ namespace CSV_Verarbeitung.Operations
                     }
                     catch (ArgumentException e)
                     {
-                        MessageBoxProcessor.Run("Das Speichern der Datei ist fehlgeschlagen!" + Environment.NewLine + "---" + Environment.NewLine + e.ToString(), "Speichern fehlgeschlagen", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        MessageBoxProcessor.Show("Das Speichern der Datei ist fehlgeschlagen!" + Environment.NewLine + "---" + Environment.NewLine + e.ToString(), "Speichern fehlgeschlagen", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
             }
@@ -171,7 +171,7 @@ namespace CSV_Verarbeitung.Operations
             }
             else
             {
-                MessageBoxProcessor.Run("Sie müssen mindestens zwei Spalten wählen!", "Fehler beim Laden des Charts", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBoxProcessor.Show("Sie müssen mindestens zwei Spalten wählen!", "Fehler beim Laden des Charts", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return "";
             }
         }
@@ -219,7 +219,7 @@ namespace CSV_Verarbeitung.Operations
                     catch
                     {
                         filePath = null;
-                        MessageBoxProcessor.Run("Beim Laden der Datei ist ein Fehler aufgetreten!", "Datei konnte nicht geladen werden", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBoxProcessor.Show("Beim Laden der Datei ist ein Fehler aufgetreten!", "Datei konnte nicht geladen werden", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 else
