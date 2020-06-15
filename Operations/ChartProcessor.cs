@@ -5,18 +5,18 @@ namespace CSV_Verarbeitung.Operations
 {
     class ChartProcessor
     {
-        public static bool CreateChart(DataGridView dataGridView, string type)
+        public static bool CreateChart(DataGridView dataGridView, string diagramType)
         {
             CsvProcessor.csvData = CsvProcessor.PopulateCsvString(dataGridView);
             bool isCreated;
             if (dataGridView.SelectedColumns.Count > 1)
             {
-                if (type == "tortendiagramm")
+                if (diagramType == "tortendiagramm")
                 {
 
                     isCreated = true;
                 }
-                else if (type == "balkendiagramm")
+                else if (diagramType == "balkendiagramm")
                 {
 
                     isCreated = true;

@@ -49,9 +49,6 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.zeileHinzufügenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.zeileEntfernenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.schriftgrößeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.schriftgrößeToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.grafischeDarstellungToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dateiÖffnenToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -225,16 +222,13 @@
             this.toolStripSeparator1,
             this.zeileHinzufügenToolStripMenuItem,
             this.zeileEntfernenToolStripMenuItem,
-            this.toolStripSeparator2,
-            this.schriftgrößeToolStripMenuItem,
-            this.schriftgrößeToolStripMenuItem1,
             this.toolStripSeparator3,
             this.grafischeDarstellungToolStripMenuItem,
             this.dateiÖffnenToolStripMenuItem,
             this.dateiSpeichernToolStripMenuItem});
             this.EditDataGridViewContextMenuStrip.LayoutStyle = System.Windows.Forms.ToolStripLayoutStyle.HorizontalStackWithOverflow;
             this.EditDataGridViewContextMenuStrip.Name = "contextMenuStrip1";
-            this.EditDataGridViewContextMenuStrip.Size = new System.Drawing.Size(204, 220);
+            this.EditDataGridViewContextMenuStrip.Size = new System.Drawing.Size(204, 192);
             // 
             // spalteHinzufugenToolStripMenuItem
             // 
@@ -297,28 +291,6 @@
             this.zeileEntfernenToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.zeileEntfernenToolStripMenuItem.Text = "Zeile entfernen";
             this.zeileEntfernenToolStripMenuItem.Click += new System.EventHandler(this.ZeileEntfernenToolStripMenuItem_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.BackColor = System.Drawing.Color.White;
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(200, 6);
-            // 
-            // schriftgrößeToolStripMenuItem
-            // 
-            this.schriftgrößeToolStripMenuItem.Image = global::CSV_Verarbeitung.Properties.Resources.Increase_Font_48px;
-            this.schriftgrößeToolStripMenuItem.Name = "schriftgrößeToolStripMenuItem";
-            this.schriftgrößeToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.schriftgrößeToolStripMenuItem.Text = "Schriftgröße +";
-            this.schriftgrößeToolStripMenuItem.Click += new System.EventHandler(this.SchriftgrößeToolStripMenuItem_Click);
-            // 
-            // schriftgrößeToolStripMenuItem1
-            // 
-            this.schriftgrößeToolStripMenuItem1.Image = global::CSV_Verarbeitung.Properties.Resources.Decrease_Font_48px;
-            this.schriftgrößeToolStripMenuItem1.Name = "schriftgrößeToolStripMenuItem1";
-            this.schriftgrößeToolStripMenuItem1.Size = new System.Drawing.Size(203, 22);
-            this.schriftgrößeToolStripMenuItem1.Text = "Schriftgröße -";
-            this.schriftgrößeToolStripMenuItem1.Click += new System.EventHandler(this.SchriftgrößeToolStripMenuItem1_Click);
             // 
             // toolStripSeparator3
             // 
@@ -575,7 +547,7 @@
             // 
             this.balkendiagrammToolStripMenuItem.Image = global::CSV_Verarbeitung.Properties.Resources.Bar_Chart_48px;
             this.balkendiagrammToolStripMenuItem.Name = "balkendiagrammToolStripMenuItem";
-            this.balkendiagrammToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.balkendiagrammToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.balkendiagrammToolStripMenuItem.Text = "Balkendiagramm";
             this.balkendiagrammToolStripMenuItem.Click += new System.EventHandler(this.KreisdiagrammToolStripMenuItem_Click);
             // 
@@ -583,7 +555,7 @@
             // 
             this.tortendiagrammToolStripMenuItem.Image = global::CSV_Verarbeitung.Properties.Resources.Chart_48px;
             this.tortendiagrammToolStripMenuItem.Name = "tortendiagrammToolStripMenuItem";
-            this.tortendiagrammToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tortendiagrammToolStripMenuItem.Size = new System.Drawing.Size(164, 22);
             this.tortendiagrammToolStripMenuItem.Text = "Tortendiagramm";
             this.tortendiagrammToolStripMenuItem.Click += new System.EventHandler(this.TortendiagrammToolStripMenuItem_Click);
             // 
@@ -667,13 +639,10 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem zeileHinzufügenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem zeileEntfernenToolStripMenuItem;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem grafischeDarstellungToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dateiÖffnenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem hinzufügenToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem dateiSpeichernToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem schriftgrößeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem schriftgrößeToolStripMenuItem1;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripTextBox toolStripTextBox1;
         private System.Windows.Forms.ToolStripMenuItem hinzufügenToolStripMenuItem1;

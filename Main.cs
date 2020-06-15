@@ -134,10 +134,6 @@ namespace CSV_Verarbeitung
             info.Show();
         }
 
-        private void SchriftgrößeToolStripMenuItem1_Click(object sender, EventArgs e) => workspaceDataGridView.Font = new Font(workspaceDataGridView.Font.Name, workspaceDataGridView.Font.SizeInPoints - 1, workspaceDataGridView.Font.Style);
-
-        private void SchriftgrößeToolStripMenuItem_Click(object sender, EventArgs e) => workspaceDataGridView.Font = new Font(workspaceDataGridView.Font.Name, workspaceDataGridView.Font.SizeInPoints + 1, workspaceDataGridView.Font.Style);
-
         private void ZeileEntfernenToolStripMenuItem_Click(object sender, EventArgs e)
         {
             DataGridViewOperations.RemoveRow(workspaceDataGridView);
@@ -167,25 +163,6 @@ namespace CSV_Verarbeitung
 
         private void WorkspaceDataGridView_SelectionChanged(object sender, EventArgs e)
         {
-            ///DataGridViewColumn[] dataGridViewColumns;
-            ///if(Interface.isChartModeEnabled == true)
-            ///{
-            ///    spalteWählenToolStripMenuItem.DropDownItems.Clear();
-            ///    foreach (DataGridViewColumn dataGridViewColumn in workspaceDataGridView.Columns)
-            ///    {
-            ///        if (dataGridViewColumn.HeaderCell.Value != null)
-            ///        {
-            ///            ToolStripMenuItem newToolStripMenuItem = new ToolStripMenuItem
-            ///            {
-            ///                CheckOnClick = true,
-            ///                Text = dataGridViewColumn.HeaderCell.Value.ToString(),
-            ///                Checked = true
-            ///            };
-            ///            spalteWählenToolStripMenuItem.DropDownItems.Add(newToolStripMenuItem);
-            ///            //dataGridViewColumns = { dataGridViewColumns, dataGridViewColumn};
-            ///        }
-            ///    }
-            ///}
         }
 
         private void DiagrammModusBeendenToolStripMenuItem_Click(object sender, EventArgs e)
