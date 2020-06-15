@@ -1,52 +1,65 @@
-﻿using Syncfusion.Windows.Forms;
-using Syncfusion.Windows.Forms.Chart.SvgBase;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Text;
 using System.Windows.Forms;
 
 namespace CSV_Verarbeitung.Operations
 {
     class ChartProcessor
     {
-        private static List<KeyValuePair<string, DataGridViewCell[]>> getSelectedColumnsValues(DataGridView dataGridView)
+        private static List<KeyValuePair<string, List<string>>> GetSelectedColumnsValues(DataGridView dataGridView)
         {
-            bool isUsedColumn = false;
-            List<KeyValuePair<string, DataGridViewCell[]>> returnList = new List<KeyValuePair<string, DataGridViewCell[]>>();
             List<string> columnList = new List<string>();
+            List<string> cellList = new List<string>();
 
             foreach (DataGridViewCell dataGridViewCell in dataGridView.SelectedCells)
             {
-                foreach(DataGridViewColumn dataGridViewColumn in dataGridView.SelectedColumns)
+                bool isInColumn = false;
+                foreach (DataGridViewColumn dataGridViewColumn in dataGridView.SelectedColumns)
                 {
                     string headerText = dataGridViewColumn.HeaderText.Replace("●", "");
 
                     string saveNumeric = headerText + "●" + dataGridViewColumn.Index + "●zahlen";
                     string saveString = headerText + "●" + dataGridViewColumn.Index + "●texte";
-                    bool isNumeric = false;
 
                     if (dataGridViewCell.OwningColumn == dataGridViewColumn && !columnList.Contains(saveString) && !columnList.Contains(saveNumeric))
                     {
-                        DialogResult dialogResult = MessageBoxProcessor.Show("► " + dataGridViewColumn.HeaderText.Replace("●", "") + " ◄ " + Environment.NewLine + "Enthält die Spalte Zahlen oder Texte?", "Art wählen", MessageBoxButtons.YesNo, MessageBoxIcon.Question, "IntString");
+
+                        StringBuilder messageBoxMessage = new StringBuilder();
+                        messageBoxMessage.AppendLine("► " + dataGridViewColumn.HeaderText.Replace("●", "") + " ◄ ");
+                        messageBoxMessage.AppendLine("Enthält die gewählte Spalte Zahlen oder Texte?");
+                        messageBoxMessage.AppendLine("");
+                        messageBoxMessage.AppendLine("Zahl: Summiert alle einträge");
+                        messageBoxMessage.AppendLine("Text: Gruppiert und Zählt alle Einträge");
+
+                        DialogResult dialogResult = MessageBoxProcessor.Show(messageBoxMessage.ToString(),"Art wählen", MessageBoxButtons.YesNo, MessageBoxIcon.Question, "IntString");
                         if (dialogResult == DialogResult.Yes)
                         {
-                            isUsedColumn = true;
-                            isNumeric = true;
                             columnList.Add(saveNumeric);
                         }
                         else if (dialogResult == DialogResult.No)
                         {
-                            isUsedColumn = true;
-                            isNumeric = false;
                             columnList.Add(saveString);
                         }
                     }
-                    if (isUsedColumn == true && isNumeric == true)
+                    else if(dataGridViewCell.OwningColumn == dataGridViewColumn)
                     {
-                        /// check if all cell values are numeric
-
-
+                        isInColumn = true;
                     }
                 }
+                if (isInColumn == true)
+                {
+                    if (dataGridViewCell.Value != null && !string.IsNullOrEmpty(dataGridViewCell.Value.ToString()))
+                    {
+                        cellList.Add(dataGridViewCell.Value.ToString());
+                    }
+                }
+            }
+
+            List<KeyValuePair<string, List<string>>> returnList = new List<KeyValuePair<string, List<string>>>();
+            foreach (string column in columnList)
+            {
+                KeyValuePair<string, List<string>> keyValuePair = new KeyValuePair<string, List<string>>(column, cellList);
+                returnList.Add(keyValuePair);
             }
             return returnList;
         }
@@ -54,8 +67,14 @@ namespace CSV_Verarbeitung.Operations
         {
             if (dataGridView.SelectedColumns.Count > 0)
             {
-                List<KeyValuePair<string, DataGridViewCell[]>> getColumnCellsValue = getSelectedColumnsValues(dataGridView);
-
+                List<KeyValuePair<string, List<string>>> getColumnCellsValue = GetSelectedColumnsValues(dataGridView);
+                foreach (KeyValuePair<string, List<string>> kvp in getColumnCellsValue)
+                {
+                    foreach(string dataGridViewCellValue in kvp.Value)
+                    {
+                        MessageBox.Show(dataGridViewCellValue, kvp.Key);
+                    }
+                }
                 if (diagramType == "tortendiagramm")
                 {
                     // Tortendiagramm

@@ -5,6 +5,7 @@
 using Syncfusion.Windows.Forms;
 using System;
 using System.Globalization;
+using System.Text;
 using System.Windows.Forms;
 
 namespace CSV_Verarbeitung.Operations
@@ -25,15 +26,13 @@ namespace CSV_Verarbeitung.Operations
             // Alle angegebenen Controls deaktivieren und unsichtbar machen
             if (enabled == true)
             {
-                DialogResult dialogResult = MessageBoxProcessor.Show("Sie haben den Diagramm Modus erfolgriech aktiviert!" +
-                    Environment.NewLine +
-                    "Wählen Sie nun eine oder mehrere Spalten zur Darstellung in einem Diagramm."+
-                    Environment.NewLine+
-                    Environment.NewLine+
-                    "Zur bestätigung Ihrer Erstellung, nutzen Sie bitte das Kontextmenü",
-                    "Diagramm Modus aktiviert",
-                    MessageBoxButtons.OKCancel,
-                    MessageBoxIcon.Information);
+                StringBuilder messageBoxMessage = new StringBuilder();
+                messageBoxMessage.AppendLine("Sie haben den Diagramm Modus erfolgriech aktiviert!");
+                messageBoxMessage.AppendLine("Wählen Sie nun eine oder mehrere Spalten zur Darstellung in einem Diagramm.");
+                messageBoxMessage.AppendLine("");
+                messageBoxMessage.AppendLine("Zur bestätigung Ihrer Erstellung, nutzen Sie bitte das Kontextmenü");
+
+                DialogResult dialogResult = MessageBoxProcessor.Show(messageBoxMessage.ToString(),"Diagramm Modus aktiviert",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
                 if(dialogResult == DialogResult.OK)
                 {
                     isChartModeEnabled = true;
