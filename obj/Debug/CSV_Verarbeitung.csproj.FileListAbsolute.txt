@@ -60,3 +60,8 @@ C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\Syncfusion.PivotAnalysis.B
 C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\Syncfusion.PivotChart.Windows.xml
 C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\Syncfusion.SfSmithChart.WinForms.xml
 C:\Users\Alexander\Desktop\CSV Verarbeitung\obj\Debug\CSV_Verarbeitung.Main.resources
+C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\CSV_Verarbeitung.exe.manifest
+C:\Users\Alexander\Desktop\CSV Verarbeitung\bin\Debug\CSV_Verarbeitung.application
+C:\Users\Alexander\Desktop\CSV Verarbeitung\obj\Debug\CSV_Verarbeitung.TrustInfo.xml
+C:\Users\Alexander\Desktop\CSV Verarbeitung\obj\Debug\CSV_Verarbeitung.exe.manifest
+C:\Users\Alexander\Desktop\CSV Verarbeitung\obj\Debug\CSV_Verarbeitung.application
