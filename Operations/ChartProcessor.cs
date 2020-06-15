@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using Syncfusion.Windows.Forms.Chart.SvgBase;
+using System.Collections.Generic;
 using System.Text;
 using System.Windows.Forms;
 
@@ -6,7 +7,11 @@ namespace CSV_Verarbeitung.Operations
 {
     class ChartProcessor
     {
-        private static List<KeyValuePair<string, List<string>>> GetSelectedColumnsValues(DataGridView dataGridView)
+        public static List<KeyValuePair<string, List<string>>> stringListValuePairs;
+        public static List<KeyValuePair<string, List<decimal>>> decimalListValuePairs;
+        public static string diagramType;
+
+        private static void GetSelectedColumnsProcessedValues(DataGridView dataGridView, List<KeyValuePair<string, List<string>>> stringListValuePairs, List<KeyValuePair<string, List<decimal>>> decimalListValuePairs)
         {
             List<string> columnList = new List<string>();
             List<string> cellList = new List<string>();
@@ -46,6 +51,7 @@ namespace CSV_Verarbeitung.Operations
                         isInColumn = true;
                     }
                 }
+
                 if (isInColumn == true)
                 {
                     if (dataGridViewCell.Value != null && !string.IsNullOrEmpty(dataGridViewCell.Value.ToString()))
@@ -55,27 +61,50 @@ namespace CSV_Verarbeitung.Operations
                 }
             }
 
-            List<KeyValuePair<string, List<string>>> returnList = new List<KeyValuePair<string, List<string>>>();
+            bool hasStringAsInt = false;
             foreach (string column in columnList)
             {
-                KeyValuePair<string, List<string>> keyValuePair = new KeyValuePair<string, List<string>>(column, cellList);
-                returnList.Add(keyValuePair);
+                if (hasStringAsInt == true)
+                {
+                    break;
+                }
+
+                string columnType = column.Split('●')[2];
+                string columnName = column.Split('●')[0];
+
+                if (columnType == "zahlen")
+                {
+                    List<decimal> decimalValueList = new List<decimal>();
+                    foreach(string cell in cellList)
+                    {
+                        try
+                        {
+                            decimalValueList.Add(decimal.Parse(cell.Replace(".", "").Replace(",",".")));
+                        }
+                        catch
+                        {
+                            MessageBoxProcessor.Show(columnName + " ("+cell+") enthält nicht nur Daten vom Typ Zahlen!", "Erstellung abgebrochen", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            hasStringAsInt = true;
+                            break;
+                        }
+                    }
+                    KeyValuePair<string, List<decimal>> keyValuePair = new KeyValuePair<string, List<decimal>>(column, decimalValueList);
+                    decimalListValuePairs.Add(keyValuePair);
+                }
+                else if(columnType == "texte")
+                {
+                    KeyValuePair<string, List<string>> keyValuePair = new KeyValuePair<string, List<string>>(column, cellList);
+                    stringListValuePairs.Add(keyValuePair);
+                }
             }
-            return returnList;
         }
-        public static void CreateChart(DataGridView dataGridView, string diagramType)
+        public static void CreateChart(DataGridView dataGridView, string type)
         {
             if (dataGridView.SelectedColumns.Count > 0)
             {
-                List<KeyValuePair<string, List<string>>> getColumnCellsValue = GetSelectedColumnsValues(dataGridView);
-                foreach (KeyValuePair<string, List<string>> kvp in getColumnCellsValue)
-                {
-                    foreach(string dataGridViewCellValue in kvp.Value)
-                    {
-                        MessageBox.Show(dataGridViewCellValue, kvp.Key);
-                    }
-                }
-                if (diagramType == "tortendiagramm")
+                GetSelectedColumnsProcessedValues(dataGridView, stringListValuePairs, decimalListValuePairs);
+                diagramType = type;
+                if (type == "tortendiagramm")
                 {
                     // Tortendiagramm
                 }
