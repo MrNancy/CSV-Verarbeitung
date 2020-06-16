@@ -9,11 +9,7 @@ namespace CSV_Verarbeitung
         public Charts()
         {
             InitializeComponent();
-        }
-
-        private void Charts_Load(object sender, EventArgs e)
-        {
-            richTextBox1.Text = CsvProcessor.csvData;
+            ChartProcessor.PopulateChart(tabPageAdv1, tabPageAdv2, ChartProcessor.stringListValuePairs, ChartProcessor.decimalListValuePairs);
         }
     }
 }

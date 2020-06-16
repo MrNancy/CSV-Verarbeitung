@@ -1,4 +1,5 @@
 ﻿using Syncfusion.Windows.Forms.Chart.SvgBase;
+using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -102,6 +103,18 @@ namespace CSV_Verarbeitung.Operations
                         stringListValuePairs.Add(keyValuePair);
                     }
                 }
+            }
+        }
+
+        public static void PopulateChart(TabPageAdv stringChartTabPage, TabPageAdv decimalChartTabPage, List<KeyValuePair<string, int>> stringKeyValuePairs, List<KeyValuePair<string, List<decimal>>> decimalKeyValuePairs)
+        {
+            if (stringKeyValuePairs.Any())
+            {
+                stringChartTabPage.Visible = true;
+            }
+            if (decimalKeyValuePairs.Any())
+            {
+                decimalChartTabPage.Visible = true;
             }
         }
         public static void CreateChart(DataGridView dataGridView, string type)
