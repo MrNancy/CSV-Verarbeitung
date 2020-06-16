@@ -1,17 +1,20 @@
 ﻿using Syncfusion.Windows.Forms.Chart.SvgBase;
+using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CSV_Verarbeitung.Operations
 {
     class ChartProcessor
     {
-        public static List<KeyValuePair<string, List<string>>> stringListValuePairs;
-        public static List<KeyValuePair<string, List<decimal>>> decimalListValuePairs;
+        public static List<KeyValuePair<List<string>, int>> stringListValuePairs = new List<KeyValuePair<List<string>, int>>();
+        public static List<KeyValuePair<string, List<decimal>>> decimalListValuePairs = new List<KeyValuePair<string, List<decimal>>>();
         public static string diagramType;
 
-        private static void GetSelectedColumnsProcessedValues(DataGridView dataGridView, List<KeyValuePair<string, List<string>>> stringListValuePairs, List<KeyValuePair<string, List<decimal>>> decimalListValuePairs)
+        private static void GetSelectedColumnsProcessedValues(DataGridView dataGridView, List<KeyValuePair<List<string>, int>> stringListValuePairs, List<KeyValuePair<string, List<decimal>>> decimalListValuePairs)
         {
             List<string> columnList = new List<string>();
             List<string> cellList = new List<string>();
@@ -93,8 +96,8 @@ namespace CSV_Verarbeitung.Operations
                 }
                 else if(columnType == "texte")
                 {
-                    KeyValuePair<string, List<string>> keyValuePair = new KeyValuePair<string, List<string>>(column, cellList);
-                    stringListValuePairs.Add(keyValuePair);
+                    //KeyValuePair<List<string>, int> keyValuePair = new KeyValuePair<List<string>, int>(column, cellList);
+                    //stringListValuePairs.Add(keyValuePair);
                 }
             }
         }
@@ -104,13 +107,14 @@ namespace CSV_Verarbeitung.Operations
             {
                 GetSelectedColumnsProcessedValues(dataGridView, stringListValuePairs, decimalListValuePairs);
                 diagramType = type;
-                if (type == "tortendiagramm")
+                if (stringListValuePairs.Any() || decimalListValuePairs.Any())
                 {
-                    // Tortendiagramm
+                    Charts chart = new Charts();
+                    chart.Show();
                 }
                 else
                 {
-                    // Balkendiagramm
+                    MessageBoxProcessor.Show("Es ist ein Fehler aufgetreten!"+Environment.NewLine+"Bitte versuchen Sie es erneut.", "Erstellung fehlgeschlagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             else
