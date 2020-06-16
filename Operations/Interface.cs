@@ -1,11 +1,4 @@
-﻿///
-/// Interface Funktionen
-///
-
-using Syncfusion.Windows.Forms;
-using System;
-using System.Globalization;
-using System.Text;
+﻿using System.Text;
 using System.Windows.Forms;
 
 namespace CSV_Verarbeitung.Operations

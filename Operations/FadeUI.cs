@@ -1,8 +1,4 @@
-﻿///
-/// Diese Klasse wird genutzt um ein "FADE" Effekt in diverse UI Elemente zu integrieren.
-///
-
-using CSV_Verarbeitung.Properties;
+﻿using CSV_Verarbeitung.Properties;
 using System;
 using System.Drawing;
 using System.Drawing.Imaging;

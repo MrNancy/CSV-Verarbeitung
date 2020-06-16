@@ -1,11 +1,10 @@
-﻿using Syncfusion.Windows.Forms.Tools;
+﻿using LiveCharts;
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
+using LiveCharts.Wpf;
 
 namespace CSV_Verarbeitung.Operations
 {
@@ -32,7 +31,6 @@ namespace CSV_Verarbeitung.Operations
 
                     if (dataGridViewCell.OwningColumn == dataGridViewColumn && !columnList.Contains(saveString) && !columnList.Contains(saveNumeric))
                     {
-
                         StringBuilder messageBoxMessage = new StringBuilder();
                         messageBoxMessage.AppendLine("► " + dataGridViewColumn.HeaderText.Replace("●", "") + " ◄ ");
                         messageBoxMessage.AppendLine("Enthält die gewählte Spalte Zahlen oder Texte?");
@@ -61,6 +59,10 @@ namespace CSV_Verarbeitung.Operations
                     if (dataGridViewCell.Value != null && !string.IsNullOrEmpty(dataGridViewCell.Value.ToString()))
                     {
                         cellList.Add(dataGridViewCell.Value.ToString());
+                    }
+                    else
+                    {
+                        cellList.Add("");
                     }
                 }
             }
@@ -106,34 +108,50 @@ namespace CSV_Verarbeitung.Operations
             }
         }
 
-        public static void PopulateChart(TabPageAdv stringChartTabPage, TabPageAdv decimalChartTabPage, Chart stringChart, Chart decimalChart, List<KeyValuePair<string, int>> stringKeyValuePairs, List<KeyValuePair<string, List<decimal>>> decimalKeyValuePairs)
+        public static void PopulateChart(LiveCharts.WinForms.CartesianChart stringChart, LiveCharts.WinForms.CartesianChart decimalChart)
         {
             Random rnd = new Random();
             decimalChart.Series.Clear();
             stringChart.Series.Clear();
-            if (stringKeyValuePairs.Any())
+            if (stringListValuePairs.Any())
             {
-                stringChartTabPage.Visible = true;
-                int i = 0;
-                foreach(KeyValuePair<string, int> keyValuePair in stringKeyValuePairs)
+                ChartValues<int> occurrences = new ChartValues<int>();
+                List<string> yAxisValues = new List<string>();
+                foreach (KeyValuePair<string, int> keyValuePair in stringListValuePairs)
                 {
-                    i++;
-                    string seriesname = keyValuePair.Key + i.ToString();
-                    stringChart.Series.Add(seriesname);
-                    stringChart.Series[seriesname].ToolTip = keyValuePair.Key;
-                    stringChart.Series[seriesname].LabelToolTip = keyValuePair.Key;
-                    stringChart.Series[seriesname].ChartType = SeriesChartType.Bar;
-                    stringChart.Series[seriesname].LegendText = keyValuePair.Key;
-                    stringChart.Series[seriesname].XValueType = ChartValueType.String;
-                    stringChart.Series[seriesname].Points.AddXY(keyValuePair.Key, keyValuePair.Value);
-                    stringChart.Series[seriesname].Color = Color.FromArgb(rnd.Next(255), rnd.Next(255), rnd.Next(255));
+                    if (!string.IsNullOrWhiteSpace(keyValuePair.Key))
+                    {
+                        occurrences.Add(keyValuePair.Value);
+                        yAxisValues.Add(keyValuePair.Key);
+                    }
                 }
-            }
-            if (decimalKeyValuePairs.Any())
-            {
-                decimalChartTabPage.Visible = true;
+                stringChart.Series.Add(new RowSeries
+                {
+                    Title = "Anzahl",
+                    Values = occurrences,
+                    StrokeThickness = 10
+                });
 
-                decimalChart.Refresh();
+
+                stringChart.AxisY.Add(new LiveCharts.Wpf.Axis
+                {
+                    Labels = yAxisValues
+                });
+
+                stringChart.AxisX.Add(new LiveCharts.Wpf.Axis
+                {
+                    LabelFormatter = value => value.ToString()
+                });
+
+                var tooltip = new DefaultTooltip
+                {
+                    SelectionMode = TooltipSelectionMode.SharedYValues
+                };
+
+                stringChart.DataTooltip = tooltip;
+            }
+            if (decimalListValuePairs.Any())
+            {
             }
         }
         public static void CreateChart(DataGridView dataGridView, string type)

@@ -2,11 +2,9 @@
 using System.IO;
 using System.Windows.Forms;
 using File = System.IO.File;
-using KBCsv;
 using System.Text;
 using System.Text.RegularExpressions;
-using Syncfusion.Windows.Forms;
-using System.Runtime.CompilerServices;
+using Microsoft.VisualBasic.FileIO;
 
 namespace CSV_Verarbeitung.Operations
 {
@@ -59,7 +57,7 @@ namespace CSV_Verarbeitung.Operations
                         string header = "";
                         foreach (DataGridViewColumn column in dataGridView.Columns)
                         {
-                            header += column.HeaderText + ";";
+                            header += column.HeaderText.Replace(";","") + ";";
                         }
                         header = header.Remove(header.Length - 1);
                         UptoMain.AppendLine(header);
@@ -90,7 +88,7 @@ namespace CSV_Verarbeitung.Operations
                                     }
 
 
-                                    line += val + ";";
+                                    line += val.Replace(";", "") + ";";
                                 }
                                 else
                                 {
@@ -197,22 +195,41 @@ namespace CSV_Verarbeitung.Operations
                 {
                     try
                     {
+                        using (StreamReader sr = new StreamReader(filePath))
+                        {
+                            foreach (string entry in sr.ReadLine().Split(seperator))
+                            {
+                                dataGridView.Columns.Add(columns.ToString().Replace(";", ""), entry);
+                            }
+                            sr.Close();
+                            sr.Dispose();
+                        }
                         using (FileStream fs = File.Open(filePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
                         using (BufferedStream bs = new BufferedStream(fs))
                         using (var streamReader = new StreamReader(fs))
-                        using (var csvReader = new CsvReader(streamReader))
+                        using (TextFieldParser csvParser = new TextFieldParser(streamReader))
                         {
-                            foreach (string entry in streamReader.ReadLine().Split(seperator))
+                            csvParser.CommentTokens = new string[] { "#" };
+                            csvParser.SetDelimiters(new string[] { ";" });
+                            csvParser.HasFieldsEnclosedInQuotes = true;
+                            csvParser.ReadLine();
+                            while (!csvParser.EndOfData)
                             {
-                                dataGridView.Columns.Add(columns.ToString(), entry);
+                                string[] fields = csvParser.ReadFields();
+                                dataGridView.Rows.Add(fields);
                             }
-                            while (csvReader.HasMoreRecords)
-                            {
-                                string tempFetch = csvReader.ReadDataRecord().ToString();
-                                tempFetch = tempFetch.Remove(tempFetch.Length - 1);
-                                string[] row = tempFetch.Split(';');
-                                dataGridView.Rows.Add(row);
-                            }
+
+                            csvParser.Close();
+                            csvParser.Dispose();
+
+                            streamReader.Close();
+                            streamReader.Dispose();
+
+                            bs.Close();
+                            bs.Dispose();
+
+                            fs.Close();
+                            fs.Dispose();
                         }
                         isDone = true;
                     }

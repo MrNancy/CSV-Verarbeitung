@@ -1,6 +1,5 @@
 ﻿using CSV_Verarbeitung.Operations;
 using System.Windows.Forms;
-using System.Windows.Forms.DataVisualization.Charting;
 
 namespace CSV_Verarbeitung
 {
@@ -9,7 +8,7 @@ namespace CSV_Verarbeitung
         public Charts()
         {
             InitializeComponent();
-            ChartProcessor.PopulateChart(tabPageAdv1, tabPageAdv2, StringChart, DecimalChart, ChartProcessor.stringListValuePairs, ChartProcessor.decimalListValuePairs);
+            ChartProcessor.PopulateChart(cartesianChart1, cartesianChart2);
         }
 
         private void StringChart_MouseDoubleClick(object sender, MouseEventArgs e)

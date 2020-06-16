@@ -28,25 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Charts));
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
-            this.StringChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.DecimalChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.button1 = new System.Windows.Forms.Button();
+            this.cartesianChart2 = new LiveCharts.WinForms.CartesianChart();
+            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabPageAdv1.SuspendLayout();
             this.tabPageAdv2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.StringChart)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DecimalChart)).BeginInit();
             this.SuspendLayout();
             // 
             // tabControlAdv1
@@ -67,7 +59,6 @@
             this.tabControlAdv1.Name = "tabControlAdv1";
             this.tabControlAdv1.Size = new System.Drawing.Size(850, 500);
             this.tabControlAdv1.TabIndex = 2;
-            this.tabControlAdv1.TabPanelBackColor = System.Drawing.Color.White;
             this.tabControlAdv1.TabPrimitivesHost.Alignment = Syncfusion.Windows.Forms.Tools.TabPrimitiveHostAlignment.Far;
             this.tabControlAdv1.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererOffice2016White);
             this.tabControlAdv1.ThemeName = "TabRendererOffice2016White";
@@ -77,12 +68,13 @@
             // tabPageAdv1
             // 
             this.tabPageAdv1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tabPageAdv1.Controls.Add(this.StringChart);
+            this.tabPageAdv1.Controls.Add(this.cartesianChart1);
             this.tabPageAdv1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.tabPageAdv1.Image = null;
             this.tabPageAdv1.ImageSize = new System.Drawing.Size(16, 16);
             this.tabPageAdv1.Location = new System.Drawing.Point(2, 27);
             this.tabPageAdv1.Name = "tabPageAdv1";
+            this.tabPageAdv1.Padding = new System.Windows.Forms.Padding(10);
             this.tabPageAdv1.ShowCloseButton = true;
             this.tabPageAdv1.Size = new System.Drawing.Size(846, 471);
             this.tabPageAdv1.TabIndex = 1;
@@ -92,7 +84,7 @@
             // tabPageAdv2
             // 
             this.tabPageAdv2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tabPageAdv2.Controls.Add(this.DecimalChart);
+            this.tabPageAdv2.Controls.Add(this.cartesianChart2);
             this.tabPageAdv2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.tabPageAdv2.Image = null;
             this.tabPageAdv2.ImageSize = new System.Drawing.Size(16, 16);
@@ -103,54 +95,6 @@
             this.tabPageAdv2.TabIndex = 2;
             this.tabPageAdv2.Text = "DECIMAL";
             this.tabPageAdv2.ThemesEnabled = true;
-            // 
-            // StringChart
-            // 
-            chartArea1.AlignmentOrientation = ((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical | System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal)));
-            chartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.None;
-            chartArea1.CursorX.IsUserEnabled = true;
-            chartArea1.CursorX.IsUserSelectionEnabled = true;
-            chartArea1.CursorY.IsUserEnabled = true;
-            chartArea1.CursorY.IsUserSelectionEnabled = true;
-            chartArea1.Name = "ChartArea1";
-            this.StringChart.ChartAreas.Add(chartArea1);
-            this.StringChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StringChart.IsSoftShadows = false;
-            legend1.Name = "Legend1";
-            legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
-            this.StringChart.Legends.Add(legend1);
-            this.StringChart.Location = new System.Drawing.Point(0, 0);
-            this.StringChart.Name = "StringChart";
-            this.StringChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.StringChart.Series.Add(series1);
-            this.StringChart.Size = new System.Drawing.Size(846, 471);
-            this.StringChart.SuppressExceptions = true;
-            this.StringChart.TabIndex = 1;
-            this.StringChart.Text = "chart1";
-            this.StringChart.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.StringChart_MouseDoubleClick);
-            // 
-            // DecimalChart
-            // 
-            chartArea2.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.None;
-            chartArea2.CursorY.IsUserSelectionEnabled = true;
-            chartArea2.Name = "ChartArea1";
-            this.DecimalChart.ChartAreas.Add(chartArea2);
-            this.DecimalChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend2.Name = "Legend1";
-            this.DecimalChart.Legends.Add(legend2);
-            this.DecimalChart.Location = new System.Drawing.Point(0, 0);
-            this.DecimalChart.Name = "DecimalChart";
-            this.DecimalChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
-            series2.ChartArea = "ChartArea1";
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.DecimalChart.Series.Add(series2);
-            this.DecimalChart.Size = new System.Drawing.Size(846, 471);
-            this.DecimalChart.TabIndex = 2;
-            this.DecimalChart.Text = "chart1";
             // 
             // button1
             // 
@@ -168,6 +112,26 @@
             this.button1.TabIndex = 3;
             this.button1.UseVisualStyleBackColor = true;
             // 
+            // cartesianChart2
+            // 
+            this.cartesianChart2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cartesianChart2.Location = new System.Drawing.Point(0, 0);
+            this.cartesianChart2.Name = "cartesianChart2";
+            this.cartesianChart2.Size = new System.Drawing.Size(846, 471);
+            this.cartesianChart2.TabIndex = 2;
+            this.cartesianChart2.Text = "cartesianChart2";
+            this.cartesianChart2.Visible = false;
+            // 
+            // cartesianChart1
+            // 
+            this.cartesianChart1.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cartesianChart1.Location = new System.Drawing.Point(10, 10);
+            this.cartesianChart1.Name = "cartesianChart1";
+            this.cartesianChart1.Size = new System.Drawing.Size(826, 451);
+            this.cartesianChart1.TabIndex = 1;
+            this.cartesianChart1.Text = "cartesianChart1";
+            // 
             // Charts
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 17F);
@@ -176,6 +140,7 @@
             this.ClientSize = new System.Drawing.Size(850, 500);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControlAdv1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -184,13 +149,10 @@
             this.Name = "Charts";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CSV Verarbeitung";
-            this.TopMost = true;
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).EndInit();
             this.tabControlAdv1.ResumeLayout(false);
             this.tabPageAdv1.ResumeLayout(false);
             this.tabPageAdv2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.StringChart)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.DecimalChart)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -199,8 +161,8 @@
         private Syncfusion.Windows.Forms.Tools.TabControlAdv tabControlAdv1;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv1;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv2;
-        private System.Windows.Forms.DataVisualization.Charting.Chart StringChart;
-        private System.Windows.Forms.DataVisualization.Charting.Chart DecimalChart;
         private System.Windows.Forms.Button button1;
+        private LiveCharts.WinForms.CartesianChart cartesianChart1;
+        private LiveCharts.WinForms.CartesianChart cartesianChart2;
     }
 }
