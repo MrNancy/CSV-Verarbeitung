@@ -28,156 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            Syncfusion.Windows.Forms.Chart.ChartSeries chartSeries1 = new Syncfusion.Windows.Forms.Chart.ChartSeries();
-            Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo chartCustomShapeInfo1 = new Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo();
-            Syncfusion.Windows.Forms.Chart.ChartLineInfo chartLineInfo1 = new Syncfusion.Windows.Forms.Chart.ChartLineInfo();
-            Syncfusion.Windows.Forms.Chart.ChartSeries chartSeries2 = new Syncfusion.Windows.Forms.Chart.ChartSeries();
-            Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo chartCustomShapeInfo2 = new Syncfusion.Windows.Forms.Chart.ChartCustomShapeInfo();
-            Syncfusion.Windows.Forms.Chart.ChartLineInfo chartLineInfo2 = new Syncfusion.Windows.Forms.Chart.ChartLineInfo();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Charts));
-            this.DecimalChart = new Syncfusion.Windows.Forms.Chart.ChartControl();
-            this.StringChart = new Syncfusion.Windows.Forms.Chart.ChartControl();
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.StringChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.DecimalChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.button1 = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabPageAdv1.SuspendLayout();
             this.tabPageAdv2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.StringChart)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DecimalChart)).BeginInit();
             this.SuspendLayout();
-            // 
-            // DecimalChart
-            // 
-            this.DecimalChart.ChartArea.BackInterior = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.Transparent);
-            this.DecimalChart.ChartArea.CursorLocation = new System.Drawing.Point(0, 0);
-            this.DecimalChart.ChartArea.CursorReDraw = false;
-            this.DecimalChart.ChartInterior = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.Transparent);
-            this.DecimalChart.CustomPalette = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(144)))), ((int)(((byte)(34))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(190)))), ((int)(((byte)(82))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(222)))), ((int)(((byte)(37))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(66)))), ((int)(((byte)(153))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(90)))), ((int)(((byte)(36))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(72)))), ((int)(((byte)(38)))))};
-            this.DecimalChart.DataSourceName = "[none]";
-            this.DecimalChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.DecimalChart.IsWindowLess = false;
-            // 
-            // 
-            // 
-            this.DecimalChart.Legend.Alignment = Syncfusion.Windows.Forms.Chart.ChartAlignment.Center;
-            this.DecimalChart.Legend.BackInterior = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.White);
-            this.DecimalChart.Legend.Location = new System.Drawing.Point(291, 75);
-            this.DecimalChart.Legend.Orientation = Syncfusion.Windows.Forms.Chart.ChartOrientation.Horizontal;
-            this.DecimalChart.Legend.Position = Syncfusion.Windows.Forms.Chart.ChartDock.Floating;
-            this.DecimalChart.Localize = null;
-            this.DecimalChart.Location = new System.Drawing.Point(0, 0);
-            this.DecimalChart.Name = "DecimalChart";
-            this.DecimalChart.PrimaryXAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
-            this.DecimalChart.PrimaryXAxis.Margin = true;
-            this.DecimalChart.PrimaryXAxis.TickLabelsDrawingMode = Syncfusion.Windows.Forms.Chart.ChartAxisTickLabelDrawingMode.BothUserAndAutomaticMode;
-            this.DecimalChart.PrimaryXAxis.Title = "X-Achse";
-            this.DecimalChart.PrimaryXAxis.TitleColor = System.Drawing.SystemColors.ControlText;
-            this.DecimalChart.PrimaryXAxis.ValueType = Syncfusion.Windows.Forms.Chart.ChartValueType.Custom;
-            this.DecimalChart.PrimaryYAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
-            this.DecimalChart.PrimaryYAxis.Margin = true;
-            this.DecimalChart.PrimaryYAxis.Title = "Y-Achse";
-            this.DecimalChart.PrimaryYAxis.TitleColor = System.Drawing.SystemColors.ControlText;
-            chartSeries1.FancyToolTip.ResizeInsideSymbol = true;
-            chartSeries1.Name = "Series1";
-            chartSeries1.Points.Add(0D, ((double)(0D)));
-            chartSeries1.Resolution = 0D;
-            chartSeries1.StackingGroup = "Default Group";
-            chartSeries1.Style.AltTagFormat = "";
-            chartSeries1.Style.DisplayText = true;
-            chartSeries1.Style.DrawTextShape = false;
-            chartLineInfo1.Alignment = System.Drawing.Drawing2D.PenAlignment.Center;
-            chartLineInfo1.Color = System.Drawing.SystemColors.ControlText;
-            chartLineInfo1.DashPattern = null;
-            chartLineInfo1.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            chartLineInfo1.Width = 1F;
-            chartCustomShapeInfo1.Border = chartLineInfo1;
-            chartCustomShapeInfo1.Color = System.Drawing.SystemColors.HighlightText;
-            chartCustomShapeInfo1.Type = Syncfusion.Windows.Forms.Chart.ChartCustomShape.Square;
-            chartSeries1.Style.TextShape = chartCustomShapeInfo1;
-            chartSeries1.Text = "Series1";
-            this.DecimalChart.Series.Add(chartSeries1);
-            this.DecimalChart.Size = new System.Drawing.Size(843, 494);
-            this.DecimalChart.TabIndex = 0;
-            // 
-            // 
-            // 
-            this.DecimalChart.Title.Name = "Default";
-            this.DecimalChart.ToolBar.Border.ForeColor = System.Drawing.Color.White;
-            this.DecimalChart.ToolBar.Border.Width = 0F;
-            this.DecimalChart.VisualTheme = "";
-            // 
-            // StringChart
-            // 
-            this.StringChart.ChartArea.BackInterior = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.Transparent);
-            this.StringChart.ChartArea.CursorLocation = new System.Drawing.Point(0, 0);
-            this.StringChart.ChartArea.CursorReDraw = false;
-            this.StringChart.ChartInterior = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.Transparent);
-            this.StringChart.CustomPalette = new System.Drawing.Color[] {
-        System.Drawing.Color.FromArgb(((int)(((byte)(238)))), ((int)(((byte)(144)))), ((int)(((byte)(34))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(107)))), ((int)(((byte)(190)))), ((int)(((byte)(82))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(222)))), ((int)(((byte)(37))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(158)))), ((int)(((byte)(66)))), ((int)(((byte)(153))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(140)))), ((int)(((byte)(90)))), ((int)(((byte)(36))))),
-        System.Drawing.Color.FromArgb(((int)(((byte)(221)))), ((int)(((byte)(72)))), ((int)(((byte)(38)))))};
-            this.StringChart.DataSourceName = "[none]";
-            this.StringChart.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.StringChart.IsWindowLess = false;
-            // 
-            // 
-            // 
-            this.StringChart.Legend.Alignment = Syncfusion.Windows.Forms.Chart.ChartAlignment.Center;
-            this.StringChart.Legend.BackInterior = new Syncfusion.Drawing.BrushInfo(System.Drawing.Color.White);
-            this.StringChart.Legend.Location = new System.Drawing.Point(291, 75);
-            this.StringChart.Legend.Position = Syncfusion.Windows.Forms.Chart.ChartDock.Floating;
-            this.StringChart.Localize = null;
-            this.StringChart.Location = new System.Drawing.Point(0, 0);
-            this.StringChart.Name = "StringChart";
-            this.StringChart.PrimaryXAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
-            this.StringChart.PrimaryXAxis.Margin = true;
-            this.StringChart.PrimaryXAxis.TickLabelsDrawingMode = Syncfusion.Windows.Forms.Chart.ChartAxisTickLabelDrawingMode.BothUserAndAutomaticMode;
-            this.StringChart.PrimaryXAxis.Title = "X-Achse";
-            this.StringChart.PrimaryXAxis.TitleColor = System.Drawing.SystemColors.ControlText;
-            this.StringChart.PrimaryXAxis.ValueType = Syncfusion.Windows.Forms.Chart.ChartValueType.Custom;
-            this.StringChart.PrimaryYAxis.LogLabelsDisplayMode = Syncfusion.Windows.Forms.Chart.LogLabelsDisplayMode.Default;
-            this.StringChart.PrimaryYAxis.Margin = true;
-            this.StringChart.PrimaryYAxis.Title = "Y-Achse";
-            this.StringChart.PrimaryYAxis.TitleColor = System.Drawing.SystemColors.ControlText;
-            chartSeries2.FancyToolTip.ResizeInsideSymbol = true;
-            chartSeries2.Name = "Series1";
-            chartSeries2.Points.Add(0D, ((double)(0D)));
-            chartSeries2.Resolution = 0D;
-            chartSeries2.StackingGroup = "Default Group";
-            chartSeries2.Style.AltTagFormat = "";
-            chartSeries2.Style.DisplayText = true;
-            chartSeries2.Style.DrawTextShape = false;
-            chartLineInfo2.Alignment = System.Drawing.Drawing2D.PenAlignment.Center;
-            chartLineInfo2.Color = System.Drawing.SystemColors.ControlText;
-            chartLineInfo2.DashPattern = null;
-            chartLineInfo2.DashStyle = System.Drawing.Drawing2D.DashStyle.Solid;
-            chartLineInfo2.Width = 1F;
-            chartCustomShapeInfo2.Border = chartLineInfo2;
-            chartCustomShapeInfo2.Color = System.Drawing.SystemColors.HighlightText;
-            chartCustomShapeInfo2.Type = Syncfusion.Windows.Forms.Chart.ChartCustomShape.Square;
-            chartSeries2.Style.TextShape = chartCustomShapeInfo2;
-            chartSeries2.Text = "Series1";
-            this.StringChart.Series.Add(chartSeries2);
-            this.StringChart.ShowToolbar = true;
-            this.StringChart.Size = new System.Drawing.Size(846, 471);
-            this.StringChart.TabIndex = 1;
-            // 
-            // 
-            // 
-            this.StringChart.Title.Name = "Default";
-            this.StringChart.ToolBar.Border.ForeColor = System.Drawing.Color.White;
-            this.StringChart.ToolBar.Border.Width = 0F;
-            this.StringChart.ToolBar.Visible = true;
-            this.StringChart.VisualTheme = "";
             // 
             // tabControlAdv1
             // 
@@ -197,6 +67,7 @@
             this.tabControlAdv1.Name = "tabControlAdv1";
             this.tabControlAdv1.Size = new System.Drawing.Size(850, 500);
             this.tabControlAdv1.TabIndex = 2;
+            this.tabControlAdv1.TabPanelBackColor = System.Drawing.Color.White;
             this.tabControlAdv1.TabPrimitivesHost.Alignment = Syncfusion.Windows.Forms.Tools.TabPrimitiveHostAlignment.Far;
             this.tabControlAdv1.TabStyle = typeof(Syncfusion.Windows.Forms.Tools.TabRendererOffice2016White);
             this.tabControlAdv1.ThemeName = "TabRendererOffice2016White";
@@ -205,7 +76,9 @@
             // 
             // tabPageAdv1
             // 
+            this.tabPageAdv1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tabPageAdv1.Controls.Add(this.StringChart);
+            this.tabPageAdv1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.tabPageAdv1.Image = null;
             this.tabPageAdv1.ImageSize = new System.Drawing.Size(16, 16);
             this.tabPageAdv1.Location = new System.Drawing.Point(2, 27);
@@ -218,16 +91,82 @@
             // 
             // tabPageAdv2
             // 
+            this.tabPageAdv2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.tabPageAdv2.Controls.Add(this.DecimalChart);
+            this.tabPageAdv2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.tabPageAdv2.Image = null;
             this.tabPageAdv2.ImageSize = new System.Drawing.Size(16, 16);
-            this.tabPageAdv2.Location = new System.Drawing.Point(3, 2);
+            this.tabPageAdv2.Location = new System.Drawing.Point(2, 27);
             this.tabPageAdv2.Name = "tabPageAdv2";
             this.tabPageAdv2.ShowCloseButton = true;
-            this.tabPageAdv2.Size = new System.Drawing.Size(843, 494);
+            this.tabPageAdv2.Size = new System.Drawing.Size(846, 471);
             this.tabPageAdv2.TabIndex = 2;
             this.tabPageAdv2.Text = "DECIMAL";
             this.tabPageAdv2.ThemesEnabled = true;
+            // 
+            // StringChart
+            // 
+            chartArea1.AlignmentOrientation = ((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations)((System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Vertical | System.Windows.Forms.DataVisualization.Charting.AreaAlignmentOrientations.Horizontal)));
+            chartArea1.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.None;
+            chartArea1.CursorX.IsUserEnabled = true;
+            chartArea1.CursorX.IsUserSelectionEnabled = true;
+            chartArea1.CursorY.IsUserEnabled = true;
+            chartArea1.CursorY.IsUserSelectionEnabled = true;
+            chartArea1.Name = "ChartArea1";
+            this.StringChart.ChartAreas.Add(chartArea1);
+            this.StringChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.StringChart.IsSoftShadows = false;
+            legend1.Name = "Legend1";
+            legend1.TableStyle = System.Windows.Forms.DataVisualization.Charting.LegendTableStyle.Tall;
+            this.StringChart.Legends.Add(legend1);
+            this.StringChart.Location = new System.Drawing.Point(0, 0);
+            this.StringChart.Name = "StringChart";
+            this.StringChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.Bright;
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.StringChart.Series.Add(series1);
+            this.StringChart.Size = new System.Drawing.Size(846, 471);
+            this.StringChart.SuppressExceptions = true;
+            this.StringChart.TabIndex = 1;
+            this.StringChart.Text = "chart1";
+            this.StringChart.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.StringChart_MouseDoubleClick);
+            // 
+            // DecimalChart
+            // 
+            chartArea2.Area3DStyle.LightStyle = System.Windows.Forms.DataVisualization.Charting.LightStyle.None;
+            chartArea2.CursorY.IsUserSelectionEnabled = true;
+            chartArea2.Name = "ChartArea1";
+            this.DecimalChart.ChartAreas.Add(chartArea2);
+            this.DecimalChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend2.Name = "Legend1";
+            this.DecimalChart.Legends.Add(legend2);
+            this.DecimalChart.Location = new System.Drawing.Point(0, 0);
+            this.DecimalChart.Name = "DecimalChart";
+            this.DecimalChart.Palette = System.Windows.Forms.DataVisualization.Charting.ChartColorPalette.SeaGreen;
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "Series1";
+            this.DecimalChart.Series.Add(series2);
+            this.DecimalChart.Size = new System.Drawing.Size(846, 471);
+            this.DecimalChart.TabIndex = 2;
+            this.DecimalChart.Text = "chart1";
+            // 
+            // button1
+            // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.button1.BackgroundImage = global::CSV_Verarbeitung.Properties.Resources.Bar_Chart_48px;
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.FlatAppearance.BorderColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseDownBackColor = System.Drawing.Color.White;
+            this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.White;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Location = new System.Drawing.Point(825, 1);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 23);
+            this.button1.TabIndex = 3;
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // Charts
             // 
@@ -235,6 +174,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(850, 500);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.tabControlAdv1);
             this.Font = new System.Drawing.Font("Century Gothic", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -249,16 +189,18 @@
             this.tabControlAdv1.ResumeLayout(false);
             this.tabPageAdv1.ResumeLayout(false);
             this.tabPageAdv2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.StringChart)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.DecimalChart)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
-
-        private Syncfusion.Windows.Forms.Chart.ChartControl DecimalChart;
-        private Syncfusion.Windows.Forms.Chart.ChartControl StringChart;
         private Syncfusion.Windows.Forms.Tools.TabControlAdv tabControlAdv1;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv1;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv2;
+        private System.Windows.Forms.DataVisualization.Charting.Chart StringChart;
+        private System.Windows.Forms.DataVisualization.Charting.Chart DecimalChart;
+        private System.Windows.Forms.Button button1;
     }
 }

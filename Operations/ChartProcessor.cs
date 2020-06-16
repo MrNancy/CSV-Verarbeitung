@@ -1,7 +1,7 @@
-﻿using Syncfusion.Windows.Forms.Chart.SvgBase;
-using Syncfusion.Windows.Forms.Tools;
+﻿using Syncfusion.Windows.Forms.Tools;
 using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
@@ -106,15 +106,34 @@ namespace CSV_Verarbeitung.Operations
             }
         }
 
-        public static void PopulateChart(TabPageAdv stringChartTabPage, TabPageAdv decimalChartTabPage, List<KeyValuePair<string, int>> stringKeyValuePairs, List<KeyValuePair<string, List<decimal>>> decimalKeyValuePairs)
+        public static void PopulateChart(TabPageAdv stringChartTabPage, TabPageAdv decimalChartTabPage, Chart stringChart, Chart decimalChart, List<KeyValuePair<string, int>> stringKeyValuePairs, List<KeyValuePair<string, List<decimal>>> decimalKeyValuePairs)
         {
+            Random rnd = new Random();
+            decimalChart.Series.Clear();
+            stringChart.Series.Clear();
             if (stringKeyValuePairs.Any())
             {
                 stringChartTabPage.Visible = true;
+                int i = 0;
+                foreach(KeyValuePair<string, int> keyValuePair in stringKeyValuePairs)
+                {
+                    i++;
+                    string seriesname = keyValuePair.Key + i.ToString();
+                    stringChart.Series.Add(seriesname);
+                    stringChart.Series[seriesname].ToolTip = keyValuePair.Key;
+                    stringChart.Series[seriesname].LabelToolTip = keyValuePair.Key;
+                    stringChart.Series[seriesname].ChartType = SeriesChartType.Bar;
+                    stringChart.Series[seriesname].LegendText = keyValuePair.Key;
+                    stringChart.Series[seriesname].XValueType = ChartValueType.String;
+                    stringChart.Series[seriesname].Points.AddXY(keyValuePair.Key, keyValuePair.Value);
+                    stringChart.Series[seriesname].Color = Color.FromArgb(rnd.Next(255), rnd.Next(255), rnd.Next(255));
+                }
             }
             if (decimalKeyValuePairs.Any())
             {
                 decimalChartTabPage.Visible = true;
+
+                decimalChart.Refresh();
             }
         }
         public static void CreateChart(DataGridView dataGridView, string type)
