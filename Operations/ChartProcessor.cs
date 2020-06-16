@@ -10,11 +10,11 @@ namespace CSV_Verarbeitung.Operations
 {
     class ChartProcessor
     {
-        public static List<KeyValuePair<List<string>, int>> stringListValuePairs = new List<KeyValuePair<List<string>, int>>();
+        public static List<KeyValuePair<string, int>> stringListValuePairs = new List<KeyValuePair<string, int>>();
         public static List<KeyValuePair<string, List<decimal>>> decimalListValuePairs = new List<KeyValuePair<string, List<decimal>>>();
         public static string diagramType;
 
-        private static void GetSelectedColumnsProcessedValues(DataGridView dataGridView, List<KeyValuePair<List<string>, int>> stringListValuePairs, List<KeyValuePair<string, List<decimal>>> decimalListValuePairs)
+        private static void GetSelectedColumnsProcessedValues(DataGridView dataGridView, List<KeyValuePair<string, int>> stringListValuePairs, List<KeyValuePair<string, List<decimal>>> decimalListValuePairs)
         {
             List<string> columnList = new List<string>();
             List<string> cellList = new List<string>();
@@ -96,8 +96,11 @@ namespace CSV_Verarbeitung.Operations
                 }
                 else if(columnType == "texte")
                 {
-                    //KeyValuePair<List<string>, int> keyValuePair = new KeyValuePair<List<string>, int>(column, cellList);
-                    //stringListValuePairs.Add(keyValuePair);
+                    foreach (var cellValueOccurrences in cellList.GroupBy(i => i))
+                    {
+                        KeyValuePair<string, int> keyValuePair = new KeyValuePair<string, int>(cellValueOccurrences.Key, cellValueOccurrences.Count());
+                        stringListValuePairs.Add(keyValuePair);
+                    }
                 }
             }
         }
