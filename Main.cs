@@ -174,14 +174,9 @@ namespace CSV_Verarbeitung
                 new Panel[] { menuBand });
         }
 
-        private void KreisdiagrammToolStripMenuItem_Click(object sender, EventArgs e)
+        private void DiagrammErstellenToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChartProcessor.ShowChart(workspaceDataGridView, "balkendiagramm");
-        }
-
-        private void TortendiagrammToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            ChartProcessor.ShowChart(workspaceDataGridView, "tortendiagramm");
+            ChartProcessor.ShowChart(workspaceDataGridView);
         }
     }
 }

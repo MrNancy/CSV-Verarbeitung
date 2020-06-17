@@ -8,11 +8,17 @@ namespace CSV_Verarbeitung
         public Charts()
         {
             InitializeComponent();
-            ChartProcessor.BindChartData(stringBarChart, decimalBarChart, stringPieChart, decimalPieChart);
         }
 
-        private void StringChart_MouseDoubleClick(object sender, MouseEventArgs e)
+        private void Charts_Load(object sender, System.EventArgs e)
         {
+            ChartProcessor.ClearChart(stringBarChart, stringPieChart);
+            ChartProcessor.BindChartData(stringBarChart, stringPieChart);
+        }
+
+        private void Charts_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            ChartProcessor.stringListValuePairs.Clear();
         }
     }
 }
