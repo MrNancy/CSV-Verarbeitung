@@ -221,7 +221,6 @@
     <EmbeddedResource Include="Resources\Chart_48px.png" />
     <EmbeddedResource Include="Resources\Bar Chart_48px.png" />
     <EmbeddedResource Include="Resources\Help_48px.png" />
-    <EmbeddedResource Include="Resources\CSV_48px.png" />
     <EmbeddedResource Include="Resources\lade.gif" />
     <EmbeddedResource Include="Resources\Increase Font_48px.png" />
     <EmbeddedResource Include="Resources\Decrease Font_48px.png" />
