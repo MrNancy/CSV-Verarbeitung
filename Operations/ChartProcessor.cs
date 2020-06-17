@@ -159,13 +159,11 @@ namespace CSV_Verarbeitung.Operations
                 #endregion stringBarChart
 
                 #region stringPieChart
-
-                string labelPoint(ChartPoint chartPoint) => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
-
                 SeriesCollection seriesCollection = new SeriesCollection();
 
                 foreach (KeyValuePair<string, int> keyValuePair in stringListValuePairs)
                 {
+                    string labelPoint(ChartPoint chartPoint) => string.Format("({0})", keyValuePair.Key);
                     if (!string.IsNullOrWhiteSpace(keyValuePair.Key))
                     {
                         SolidColorBrush pieBrush = new SolidColorBrush(System.Windows.Media.Color.FromRgb((byte)randomColorGenerator.Next(255), (byte)randomColorGenerator.Next(255), (byte)randomColorGenerator.Next(255)));

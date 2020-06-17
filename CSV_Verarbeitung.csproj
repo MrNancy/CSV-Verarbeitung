@@ -31,7 +31,7 @@
     <SuiteName>Butler-Industries</SuiteName>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>index.html</WebPage>
-    <ApplicationRevision>3</ApplicationRevision>
+    <ApplicationRevision>5</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
@@ -59,8 +59,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>icons8_Import_CSV.ico</ApplicationIcon>
   </PropertyGroup>
   <PropertyGroup>
     <ManifestCertificateThumbprint>5F7A626719B634D37752AD868EE60C8E21B09811</ManifestCertificateThumbprint>
@@ -94,9 +93,6 @@
       <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="Syncfusion.Chart.Base, Version=18.1460.0.42, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89" />
@@ -231,6 +227,9 @@
     <EmbeddedResource Include="Resources\HDD_48px.png" />
     <EmbeddedResource Include="Resources\Save_48px.png" />
     <EmbeddedResource Include="Resources\Combo Chart_48px.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="icons8_Import_CSV.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
