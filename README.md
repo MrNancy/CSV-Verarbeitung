@@ -16,7 +16,7 @@ Ich setze in meinem Projekt die folgenden 3rd Party Libraries ein:
 - Alle .gif loader stammen von [loading.io](https://loading.io/)
 
 ## Installation [Jetzt Windows Installer herunterladen](https://www.alexander-b.de/repo/csv-verarbeitung/index.html)
-Die Installation des Programmes "CSV-Verarbeitung" findet durch das Visual Studio C# Veröffentlichkeits Tool statt.
+Die Installation des Programmes "CSV-Verarbeitung" findet durch den Visual Studio Veröffentlichungsprozess statt.
 
 ## To-Do
 1. Import der beiligenden CSV-Datei ✓
