@@ -15,6 +15,8 @@ Windows Forms anstatt WPF, da mir die Syncfusion Komponentenbibliothek und das L
 ## Eingesetzte 3rd Party Libraries
 
 Ich setze in meinem Projekt die folgenden 3rd Party Libraries ein:
+Name | Begründung
+--- | ---
 - [Syncfusion](https://syncfusion.com) | UI Komponentenbibliothek
 - [LiveCharts](https://lvcharts.net/) | Datenvisualisierungstool
 - [Newtonsoft.Json](https://www.newtonsoft.com/json) | JSON framework for .NET
