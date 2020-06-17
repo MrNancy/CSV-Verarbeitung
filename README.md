@@ -15,8 +15,7 @@ Ich setze in meinem Projekt die folgenden 3rd Party Libraries ein:
 - Alle .png Resourcen stammen von [icons8](https://icons8.com/)
 - Alle .gif loader stammen von [loading.io](https://loading.io/)
 
-## Installation
-[Jetzt Installieren](https://www.alexander-b.de/repo/csv-verarbeitung/index.html)
+## Installation [Jetzt Windows Installer herunterladen](https://www.alexander-b.de/repo/csv-verarbeitung/index.html)
 Die Installation des Programmes "CSV-Verarbeitung" findet durch das Visual Studio C# Veröffentlichkeits Tool statt.
 
 ## To-Do
