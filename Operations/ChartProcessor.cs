@@ -4,9 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
 using LiveCharts.Wpf;
-using System.Drawing;
 using System.Windows.Media;
-using System.Drawing.Printing;
 
 namespace CSV_Verarbeitung.Operations
 {

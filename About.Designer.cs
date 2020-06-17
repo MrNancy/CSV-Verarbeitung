@@ -93,13 +93,14 @@
             this.okButton.FlatAppearance.BorderSize = 0;
             this.okButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.okButton.ForeColor = System.Drawing.Color.White;
-            this.okButton.Location = new System.Drawing.Point(155, 296);
+            this.okButton.Location = new System.Drawing.Point(155, 295);
             this.okButton.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.okButton.Name = "okButton";
-            this.okButton.Size = new System.Drawing.Size(304, 32);
+            this.okButton.Size = new System.Drawing.Size(304, 33);
             this.okButton.TabIndex = 24;
             this.okButton.Text = "SCHLIEßEN";
             this.okButton.UseVisualStyleBackColor = false;
+            this.okButton.Click += new System.EventHandler(this.okButton_Click);
             // 
             // richTextBox1
             // 
@@ -111,7 +112,7 @@
             this.richTextBox1.Location = new System.Drawing.Point(155, 26);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.Size = new System.Drawing.Size(304, 263);
+            this.richTextBox1.Size = new System.Drawing.Size(304, 262);
             this.richTextBox1.TabIndex = 25;
             this.richTextBox1.Text = resources.GetString("richTextBox1.Text");
             // 
