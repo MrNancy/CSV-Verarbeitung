@@ -100,7 +100,7 @@
             this.okButton.TabIndex = 24;
             this.okButton.Text = "SCHLIEßEN";
             this.okButton.UseVisualStyleBackColor = false;
-            this.okButton.Click += new System.EventHandler(this.okButton_Click);
+            this.okButton.Click += new System.EventHandler(this.OkButton_Click);
             // 
             // richTextBox1
             // 

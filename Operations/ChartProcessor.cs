@@ -1,16 +1,17 @@
 ﻿using LiveCharts;
+using LiveCharts.Wpf;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Windows.Forms;
-using LiveCharts.Wpf;
 using System.Windows.Media;
 
 namespace CSV_Verarbeitung.Operations
 {
-    class ChartProcessor
+    internal class ChartProcessor
     {
         public static List<KeyValuePair<string, int>> stringListValuePairs = new List<KeyValuePair<string, int>>();
+
         public static void ShowChart(DataGridView dataGridView)
         {
             if (dataGridView.SelectedColumns.Count > 0)
@@ -31,6 +32,7 @@ namespace CSV_Verarbeitung.Operations
                 MessageBoxProcessor.Show("Wählen Sie mindestens eine Spalte", "Spalte wählen", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
         private static void GetSelectedColumnsProcessedValues(DataGridView dataGridView, List<KeyValuePair<string, int>> stringListValuePairs)
         {
             List<string> columnList = new List<string>();
@@ -85,6 +87,7 @@ namespace CSV_Verarbeitung.Operations
                 }
             }
         }
+
         public static void ClearChart(LiveCharts.WinForms.CartesianChart barChart, LiveCharts.WinForms.PieChart pieChart)
         {
             pieChart.Series.Clear();
@@ -97,6 +100,7 @@ namespace CSV_Verarbeitung.Operations
             barChart.AxisX.Clear();
             barChart.Refresh();
         }
+
         public static void BindChartData(LiveCharts.WinForms.CartesianChart stringBarChart, LiveCharts.WinForms.PieChart stringPieChart)
         {
             ClearChart(stringBarChart, stringPieChart);
@@ -122,6 +126,7 @@ namespace CSV_Verarbeitung.Operations
                 }
 
                 #region stringBarChart
+
                 var tooltip = new DefaultTooltip
                 {
                     SelectionMode = TooltipSelectionMode.SharedYValues
@@ -150,9 +155,11 @@ namespace CSV_Verarbeitung.Operations
                 stringBarChart.DataTooltip = tooltip;
                 stringBarChart.Zoom = ZoomingOptions.Xy;
                 stringBarChart.ScrollMode = ScrollMode.XY;
-                #endregion
+
+                #endregion stringBarChart
 
                 #region stringPieChart
+
                 string labelPoint(ChartPoint chartPoint) => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
                 SeriesCollection seriesCollection = new SeriesCollection();
@@ -177,7 +184,8 @@ namespace CSV_Verarbeitung.Operations
                 stringPieChart.LegendLocation = LegendLocation.Bottom;
                 stringPieChart.Series = seriesCollection;
                 stringPieChart.Zoom = ZoomingOptions.Xy;
-                #endregion
+
+                #endregion stringPieChart
             }
         }
     }

@@ -28,11 +28,12 @@ namespace CSV_Verarbeitung
             workspaceDataGridView.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             workspaceDataGridView.ColumnHeadersDefaultCellStyle.BackColor = Color.Black;
             workspaceDataGridView.RowHeadersDefaultCellStyle.BackColor = Color.Black;
-            #endregion
 
+            #endregion datagridview test
         }
 
         #region ui buttons
+
         private void CloseButton_Click(object sender, EventArgs e)
         {
             // SHUDOWN APPLICATION
@@ -48,7 +49,8 @@ namespace CSV_Verarbeitung
         {
             WindowState = FormWindowState.Minimized;
         }
-        #endregion
+
+        #endregion ui buttons
 
         private void CheckPath_Tick(object sender, EventArgs e)
         {
@@ -108,7 +110,7 @@ namespace CSV_Verarbeitung
 
         private void WorkspaceDataGridView_RowPostPaint(object sender, DataGridViewRowPostPaintEventArgs e)
         {
-            DataGridViewProcessor.PaintRowNumbers(workspaceDataGridView, sender, e);
+            DataGridViewProcessor.PaintRowNumbers(workspaceDataGridView, e);
         }
 
         private void ChartButton_Click(object sender, EventArgs e)

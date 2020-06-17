@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace CSV_Verarbeitung.Operations
 {
-    class FadeUI
+    internal class FadeUI
     {
         public static float uploadOpacity = 1;
         public static int[] uploadLabelOpacity = new int[] { 255, 255, 255 };
@@ -53,22 +53,23 @@ namespace CSV_Verarbeitung.Operations
             }
             return uploadOpacity;
         }
+
         public static int[] DoFadeLabel()
         {
-
             // form backgroundcolor
             int y = 255;
             if (uploadOpacity.ToString() != "1")
             {
                 double x = Math.Round(uploadOpacity * 100);
                 int mp = int.Parse(x.ToString());
-                y = (int)Math.Round((decimal)(y * mp/100));
+                y = (int)Math.Round((decimal)(y * mp / 100));
                 y = 255 - y;
                 //MessageBox.Show(y.ToString(), mp.ToString());
                 if (y < 0)
                 {
                     y = 0;
-                } else if (y > 255)
+                }
+                else if (y > 255)
                 {
                     y = 255;
                 }
@@ -80,6 +81,7 @@ namespace CSV_Verarbeitung.Operations
             uploadLabelOpacity = new int[] { y, y, y };
             return uploadLabelOpacity;
         }
+
         public static async void FadeOut(PictureBox pb)
         {
             while (fadeOutOpacity > 0)

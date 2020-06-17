@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace CSV_Verarbeitung.Operations
 {
-    class Interface
+    internal class Interface
     {
         private static Panel[] reEnablePanelsChartMode;
         public static bool isChartModeEnabled = false;
@@ -25,8 +25,8 @@ namespace CSV_Verarbeitung.Operations
                 messageBoxMessage.AppendLine("");
                 messageBoxMessage.AppendLine("Zur bestätigung Ihrer Erstellung, nutzen Sie bitte das Kontextmenü");
 
-                DialogResult dialogResult = MessageBoxProcessor.Show(messageBoxMessage.ToString(),"Diagramm Modus aktiviert",MessageBoxButtons.OKCancel,MessageBoxIcon.Information);
-                if(dialogResult == DialogResult.OK)
+                DialogResult dialogResult = MessageBoxProcessor.Show(messageBoxMessage.ToString(), "Diagramm Modus aktiviert", MessageBoxButtons.OKCancel, MessageBoxIcon.Information);
+                if (dialogResult == DialogResult.OK)
                 {
                     isChartModeEnabled = true;
                     reEnablePanelsChartMode = panels;

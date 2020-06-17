@@ -9,7 +9,7 @@ namespace CSV_Verarbeitung
             InitializeComponent();
         }
 
-        private void okButton_Click(object sender, System.EventArgs e)
+        private void OkButton_Click(object sender, System.EventArgs e)
         {
             Hide();
         }

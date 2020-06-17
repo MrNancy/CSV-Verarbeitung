@@ -1,14 +1,14 @@
-﻿using System;
+﻿using Microsoft.VisualBasic.FileIO;
+using System;
 using System.IO;
-using System.Windows.Forms;
-using File = System.IO.File;
 using System.Text;
 using System.Text.RegularExpressions;
-using Microsoft.VisualBasic.FileIO;
+using System.Windows.Forms;
+using File = System.IO.File;
 
 namespace CSV_Verarbeitung.Operations
 {
-    class CsvProcessor
+    internal class CsvProcessor
     {
         public static string filePath = null;
         public static bool isDone = false;
@@ -53,15 +53,13 @@ namespace CSV_Verarbeitung.Operations
                         StringBuilder UptoMain = new StringBuilder();
                         StreamWriter file = new StreamWriter(outputFile, true, Encoding.UTF8, 512);
 
-
                         string header = "";
                         foreach (DataGridViewColumn column in dataGridView.Columns)
                         {
-                            header += column.HeaderText.Replace(";","") + ";";
+                            header += column.HeaderText.Replace(";", "") + ";";
                         }
                         header = header.Remove(header.Length - 1);
                         UptoMain.AppendLine(header);
-
 
                         foreach (DataGridViewRow row in dataGridView.Rows)
                         {
@@ -86,7 +84,6 @@ namespace CSV_Verarbeitung.Operations
                                     {
                                         val = '"' + val + '"';
                                     }
-
 
                                     line += val.Replace(";", "") + ";";
                                 }
@@ -154,7 +151,7 @@ namespace CSV_Verarbeitung.Operations
                     foreach (DataGridViewCell dataGridViewCell in dataGridViewRow.Cells)
                     {
                         object tempVal = dataGridViewCell.Value;
-                        if(tempVal is null)
+                        if (tempVal is null)
                         {
                             csvData += ";";
                         }
@@ -182,6 +179,7 @@ namespace CSV_Verarbeitung.Operations
             string[] tempRow = tempFetch.Split(';');
             dataGridView.Rows.Add(tempRow);
         }
+
         public static void PopulateDataGridView(DataGridView dataGridView)
         {
             dataGridView.Rows.Clear();
