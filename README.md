@@ -7,9 +7,11 @@ In meinem Projekte setze ich folgende Technologien ein:
 
 ## Eingesetzte 3rd Party Libraries
 Ich setze in meinem Projekt die folgenden 3rd Party Libraries ein:
-- [Syncfusion](https://syncfusion.com) | UI Komponentenbibliothek
-- [LiveCharts](https://lvcharts.net/) | Datenvisualisierungstool
-- [Newtonsoft.Json](https://www.newtonsoft.com/json) | JSON framework for .NET
+
+Name | Begründung
+--- | ---
+[Syncfusion](https://syncfusion.com) | UI Komponentenbibliothek
+[LiveCharts](https://lvcharts.net/) | Datenvisualisierungstool
 
 ## Bildressourcen
 - Alle .png Resourcen stammen von [icons8](https://icons8.com/)
