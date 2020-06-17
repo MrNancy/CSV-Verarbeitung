@@ -8,7 +8,7 @@ namespace CSV_Verarbeitung
         public Charts()
         {
             InitializeComponent();
-            ChartProcessor.PopulateChart(cartesianChart1, cartesianChart2);
+            ChartProcessor.BindChartData(stringBarChart, decimalBarChart, stringPieChart, decimalPieChart);
         }
 
         private void StringChart_MouseDoubleClick(object sender, MouseEventArgs e)

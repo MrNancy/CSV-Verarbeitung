@@ -13,6 +13,27 @@ namespace CSV_Verarbeitung.Operations
         public static List<KeyValuePair<string, int>> stringListValuePairs = new List<KeyValuePair<string, int>>();
         public static List<KeyValuePair<string, List<decimal>>> decimalListValuePairs = new List<KeyValuePair<string, List<decimal>>>();
         public static string diagramType;
+        public static void ShowChart(DataGridView dataGridView, string type)
+        {
+            if (dataGridView.SelectedColumns.Count > 0)
+            {
+                GetSelectedColumnsProcessedValues(dataGridView, stringListValuePairs, decimalListValuePairs);
+                diagramType = type;
+                if (stringListValuePairs.Any() || decimalListValuePairs.Any())
+                {
+                    Charts chart = new Charts();
+                    chart.Show();
+                }
+                else
+                {
+                    MessageBoxProcessor.Show("Es ist ein Fehler aufgetreten!" + Environment.NewLine + "Bitte versuchen Sie es erneut.", "Erstellung fehlgeschlagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else
+            {
+                MessageBoxProcessor.Show("Wählen Sie mindestens eine Spalte", "Spalte wählen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
 
         private static void GetSelectedColumnsProcessedValues(DataGridView dataGridView, List<KeyValuePair<string, int>> stringListValuePairs, List<KeyValuePair<string, List<decimal>>> decimalListValuePairs)
         {
@@ -38,7 +59,7 @@ namespace CSV_Verarbeitung.Operations
                         messageBoxMessage.AppendLine("Zahl: Summiert alle einträge");
                         messageBoxMessage.AppendLine("Text: Gruppiert und Zählt alle Einträge");
 
-                        DialogResult dialogResult = MessageBoxProcessor.Show(messageBoxMessage.ToString(),"Art wählen", MessageBoxButtons.YesNo, MessageBoxIcon.Question, "IntString");
+                        DialogResult dialogResult = MessageBoxProcessor.Show(messageBoxMessage.ToString(), "Art wählen", MessageBoxButtons.YesNo, MessageBoxIcon.Question, "IntString");
                         if (dialogResult == DialogResult.Yes)
                         {
                             columnList.Add(saveNumeric);
@@ -48,7 +69,7 @@ namespace CSV_Verarbeitung.Operations
                             columnList.Add(saveString);
                         }
                     }
-                    else if(dataGridViewCell.OwningColumn == dataGridViewColumn)
+                    else if (dataGridViewCell.OwningColumn == dataGridViewColumn)
                     {
                         isInColumn = true;
                     }
@@ -81,23 +102,26 @@ namespace CSV_Verarbeitung.Operations
                 if (columnType == "zahlen")
                 {
                     List<decimal> decimalValueList = new List<decimal>();
-                    foreach(string cell in cellList)
+                    foreach (string cell in cellList)
                     {
-                        try
+                        if (!string.IsNullOrWhiteSpace(cell))
                         {
-                            decimalValueList.Add(decimal.Parse(cell.Replace(".", "").Replace(",",".")));
-                        }
-                        catch
-                        {
-                            MessageBoxProcessor.Show(columnName + " ("+cell+") enthält nicht nur Daten vom Typ Zahlen!", "Erstellung abgebrochen", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                            hasStringAsInt = true;
-                            break;
+                            try
+                            {
+                                decimalValueList.Add(decimal.Parse(cell.Replace(".", ",")));
+                            }
+                            catch
+                            {
+                                MessageBoxProcessor.Show(columnName + " (" + cell + ") enthält nicht nur Daten vom Typ Zahlen!", "Erstellung abgebrochen", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                                hasStringAsInt = true;
+                                break;
+                            }
                         }
                     }
                     KeyValuePair<string, List<decimal>> keyValuePair = new KeyValuePair<string, List<decimal>>(column, decimalValueList);
                     decimalListValuePairs.Add(keyValuePair);
                 }
-                else if(columnType == "texte")
+                else if (columnType == "texte")
                 {
                     foreach (var cellValueOccurrences in cellList.GroupBy(i => i))
                     {
@@ -107,16 +131,45 @@ namespace CSV_Verarbeitung.Operations
                 }
             }
         }
-
-        public static void PopulateChart(LiveCharts.WinForms.CartesianChart stringChart, LiveCharts.WinForms.CartesianChart decimalChart)
+        private static void ClearChart(LiveCharts.WinForms.CartesianChart barChart, LiveCharts.WinForms.PieChart pieChart)
         {
-            Random rnd = new Random();
-            decimalChart.Series.Clear();
-            stringChart.Series.Clear();
+            pieChart.Series.Clear();
+            pieChart.AxisY.Clear();
+            pieChart.AxisX.Clear();
+            pieChart.Refresh();
+
+            barChart.Series.Clear();
+            barChart.AxisY.Clear();
+            barChart.AxisX.Clear();
+            barChart.Refresh();
+        }
+        public static void BindChartData(LiveCharts.WinForms.CartesianChart stringBarChart, LiveCharts.WinForms.CartesianChart decimalBarChart, LiveCharts.WinForms.PieChart stringPieChart, LiveCharts.WinForms.PieChart decimalPieChart)
+        {
+            ClearChart(stringBarChart, stringPieChart);
+            ClearChart(decimalBarChart, decimalPieChart);
+
+            if (diagramType == "balkendiagramm")
+            {
+                stringBarChart.Visible = true;
+                decimalBarChart.Visible = true;
+
+                stringPieChart.Visible = false;
+                decimalPieChart.Visible = false;
+            }
+            else
+            {
+                stringPieChart.Visible = true;
+                decimalPieChart.Visible = true;
+
+                stringBarChart.Visible = false;
+                decimalBarChart.Visible = false;
+            }
+
             if (stringListValuePairs.Any())
             {
                 ChartValues<int> occurrences = new ChartValues<int>();
                 List<string> yAxisValues = new List<string>();
+                int i = 0;
                 foreach (KeyValuePair<string, int> keyValuePair in stringListValuePairs)
                 {
                     if (!string.IsNullOrWhiteSpace(keyValuePair.Key))
@@ -124,55 +177,154 @@ namespace CSV_Verarbeitung.Operations
                         occurrences.Add(keyValuePair.Value);
                         yAxisValues.Add(keyValuePair.Key);
                     }
+                    i++;
                 }
-                stringChart.Series.Add(new RowSeries
+                if (i > 100 && diagramType == "balkendiagramm")
                 {
-                    Title = "Anzahl",
-                    Values = occurrences,
-                    StrokeThickness = 10
-                });
+                    MessageBoxProcessor.Show("Bei mehr als 100 Einträgen müssen Sie heranzoomen um die einzelnen Einträge richtig anzuzigen." + Environment.NewLine + "Nutzen Sie hierzu das Scrollrad", "Viele Einträge", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
 
-
-                stringChart.AxisY.Add(new LiveCharts.Wpf.Axis
+                #region stringBarChart
+                if (diagramType == "balkendiagramm")
                 {
-                    Labels = yAxisValues
-                });
+                    var tooltip = new DefaultTooltip
+                    {
+                        SelectionMode = TooltipSelectionMode.SharedYValues
+                    };
 
-                stringChart.AxisX.Add(new LiveCharts.Wpf.Axis
+                    stringBarChart.Series.Add(new RowSeries
+                    {
+                        Title = "Anzahl",
+                        Values = occurrences,
+                        StrokeThickness = 10,
+                        Width = 20
+                    });
+
+                    stringBarChart.AxisY.Add(new LiveCharts.Wpf.Axis
+                    {
+                        Labels = yAxisValues
+                    });
+
+                    stringBarChart.AxisX.Add(new LiveCharts.Wpf.Axis
+                    {
+                        LabelFormatter = value => value.ToString()
+                    });
+
+                    stringBarChart.DataTooltip = tooltip;
+                    stringBarChart.Zoom = ZoomingOptions.Xy;
+                    stringBarChart.ScrollMode = ScrollMode.XY;
+                }
+                #endregion
+
+                #region stringPieChart
+                if (diagramType == "tortendiagramm")
                 {
-                    LabelFormatter = value => value.ToString()
-                });
+                    Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
 
-                var tooltip = new DefaultTooltip
-                {
-                    SelectionMode = TooltipSelectionMode.SharedYValues
-                };
+                    SeriesCollection seriesCollection = new SeriesCollection();
 
-                stringChart.DataTooltip = tooltip;
+                    foreach (KeyValuePair<string, int> keyValuePair in stringListValuePairs)
+                    {
+                        if (!string.IsNullOrWhiteSpace(keyValuePair.Key))
+                        {
+                            PieSeries pieSeries = new PieSeries
+                            {
+                                Title = keyValuePair.Key.ToString(),
+                                Values = new ChartValues<double> { keyValuePair.Value },
+                                DataLabels = true,
+                                LabelPoint = labelPoint
+                            };
+                            seriesCollection.Add(pieSeries);
+                        }
+                    }
+                    stringPieChart.LegendLocation = LegendLocation.Bottom;
+                    stringPieChart.Series = seriesCollection;
+                    stringPieChart.Zoom = ZoomingOptions.Xy;
+                }
+                #endregion
             }
             if (decimalListValuePairs.Any())
             {
-            }
-        }
-        public static void CreateChart(DataGridView dataGridView, string type)
-        {
-            if (dataGridView.SelectedColumns.Count > 0)
-            {
-                GetSelectedColumnsProcessedValues(dataGridView, stringListValuePairs, decimalListValuePairs);
-                diagramType = type;
-                if (stringListValuePairs.Any() || decimalListValuePairs.Any())
+                ChartValues<decimal> occurrences = new ChartValues<decimal>();
+                List<string> yAxisValues = new List<string>();
+                int i = 0;
+                foreach (KeyValuePair<string, List<decimal>> keyValuePair in decimalListValuePairs)
                 {
-                    Charts chart = new Charts();
-                    chart.Show();
+                    if (!string.IsNullOrWhiteSpace(keyValuePair.Key))
+                    {
+                        decimal total = 0;
+                        foreach(decimal entry in keyValuePair.Value)
+                        {
+                            total += entry;
+                        }
+                        occurrences.Add(total);
+                        yAxisValues.Add(keyValuePair.Key);
+                    }
+                    i++;
                 }
-                else
+                if (i > 100 && diagramType == "balkendiagramm")
                 {
-                    MessageBoxProcessor.Show("Es ist ein Fehler aufgetreten!"+Environment.NewLine+"Bitte versuchen Sie es erneut.", "Erstellung fehlgeschlagen", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBoxProcessor.Show("Bei mehr als 100 Einträgen müssen Sie heranzoomen um die einzelnen Einträge richtig anzuzigen." + Environment.NewLine + "Nutzen Sie hierzu das Scrollrad", "Viele Einträge", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-            }
-            else
-            {
-                MessageBoxProcessor.Show("Wählen Sie mindestens eine Spalte", "Spalte wählen", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                #region stringBarChart
+                if (diagramType == "balkendiagramm")
+                {
+                    var tooltip = new DefaultTooltip
+                    {
+                        SelectionMode = TooltipSelectionMode.SharedYValues
+                    };
+
+                    decimalBarChart.Series.Add(new RowSeries
+                    {
+                        Title = "Anzahl",
+                        Values = occurrences,
+                        StrokeThickness = 10,
+                        Width = 20
+                    });
+
+                    decimalBarChart.AxisY.Add(new LiveCharts.Wpf.Axis
+                    {
+                        Labels = yAxisValues
+                    });
+
+                    decimalBarChart.AxisX.Add(new LiveCharts.Wpf.Axis
+                    {
+                        LabelFormatter = value => value.ToString()
+                    });
+
+                    decimalBarChart.DataTooltip = tooltip;
+                    decimalBarChart.Zoom = ZoomingOptions.Xy;
+                    decimalBarChart.ScrollMode = ScrollMode.XY;
+                }
+                #endregion
+
+                #region stringPieChart
+                if (diagramType == "tortendiagramm")
+                {
+                    Func<ChartPoint, string> labelPoint = chartPoint => string.Format("{0} ({1:P})", chartPoint.Y, chartPoint.Participation);
+
+                    SeriesCollection seriesCollection = new SeriesCollection();
+
+                    foreach (KeyValuePair<string, int> keyValuePair in stringListValuePairs)
+                    {
+                        if (!string.IsNullOrWhiteSpace(keyValuePair.Key))
+                        {
+                            PieSeries pieSeries = new PieSeries
+                            {
+                                Title = keyValuePair.Key.ToString(),
+                                Values = new ChartValues<double> { keyValuePair.Value },
+                                DataLabels = true,
+                                LabelPoint = labelPoint
+                            };
+                            seriesCollection.Add(pieSeries);
+                        }
+                    }
+                    decimalPieChart.LegendLocation = LegendLocation.Bottom;
+                    decimalPieChart.Series = seriesCollection;
+                    decimalPieChart.Zoom = ZoomingOptions.Xy;
+                }
+                #endregion
             }
         }
     }

@@ -176,12 +176,12 @@ namespace CSV_Verarbeitung
 
         private void KreisdiagrammToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChartProcessor.CreateChart(workspaceDataGridView, "balkendiagramm");
+            ChartProcessor.ShowChart(workspaceDataGridView, "balkendiagramm");
         }
 
         private void TortendiagrammToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ChartProcessor.CreateChart(workspaceDataGridView, "tortendiagramm");
+            ChartProcessor.ShowChart(workspaceDataGridView, "tortendiagramm");
         }
     }
 }

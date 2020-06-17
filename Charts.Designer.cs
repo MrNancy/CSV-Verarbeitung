@@ -31,10 +31,12 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Charts));
             this.tabControlAdv1 = new Syncfusion.Windows.Forms.Tools.TabControlAdv();
             this.tabPageAdv1 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.stringBarChart = new LiveCharts.WinForms.CartesianChart();
             this.tabPageAdv2 = new Syncfusion.Windows.Forms.Tools.TabPageAdv();
+            this.decimalBarChart = new LiveCharts.WinForms.CartesianChart();
             this.button1 = new System.Windows.Forms.Button();
-            this.cartesianChart2 = new LiveCharts.WinForms.CartesianChart();
-            this.cartesianChart1 = new LiveCharts.WinForms.CartesianChart();
+            this.decimalPieChart = new LiveCharts.WinForms.CartesianChart();
+            this.stringPieChart = new LiveCharts.WinForms.PieChart();
             ((System.ComponentModel.ISupportInitialize)(this.tabControlAdv1)).BeginInit();
             this.tabControlAdv1.SuspendLayout();
             this.tabPageAdv1.SuspendLayout();
@@ -68,7 +70,8 @@
             // tabPageAdv1
             // 
             this.tabPageAdv1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tabPageAdv1.Controls.Add(this.cartesianChart1);
+            this.tabPageAdv1.Controls.Add(this.stringPieChart);
+            this.tabPageAdv1.Controls.Add(this.stringBarChart);
             this.tabPageAdv1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.tabPageAdv1.Image = null;
             this.tabPageAdv1.ImageSize = new System.Drawing.Size(16, 16);
@@ -81,20 +84,42 @@
             this.tabPageAdv1.Text = "STRING";
             this.tabPageAdv1.ThemesEnabled = true;
             // 
+            // stringBarChart
+            // 
+            this.stringBarChart.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.stringBarChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stringBarChart.Location = new System.Drawing.Point(10, 10);
+            this.stringBarChart.Name = "stringBarChart";
+            this.stringBarChart.Size = new System.Drawing.Size(826, 451);
+            this.stringBarChart.TabIndex = 1;
+            this.stringBarChart.Text = "cartesianChart1";
+            // 
             // tabPageAdv2
             // 
             this.tabPageAdv2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tabPageAdv2.Controls.Add(this.cartesianChart2);
+            this.tabPageAdv2.Controls.Add(this.decimalPieChart);
+            this.tabPageAdv2.Controls.Add(this.decimalBarChart);
             this.tabPageAdv2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(38)))), ((int)(((byte)(38)))), ((int)(((byte)(38)))));
             this.tabPageAdv2.Image = null;
             this.tabPageAdv2.ImageSize = new System.Drawing.Size(16, 16);
             this.tabPageAdv2.Location = new System.Drawing.Point(2, 27);
             this.tabPageAdv2.Name = "tabPageAdv2";
+            this.tabPageAdv2.Padding = new System.Windows.Forms.Padding(10);
             this.tabPageAdv2.ShowCloseButton = true;
             this.tabPageAdv2.Size = new System.Drawing.Size(846, 471);
             this.tabPageAdv2.TabIndex = 2;
             this.tabPageAdv2.Text = "DECIMAL";
             this.tabPageAdv2.ThemesEnabled = true;
+            // 
+            // decimalBarChart
+            // 
+            this.decimalBarChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.decimalBarChart.Location = new System.Drawing.Point(10, 10);
+            this.decimalBarChart.Name = "decimalBarChart";
+            this.decimalBarChart.Size = new System.Drawing.Size(826, 451);
+            this.decimalBarChart.TabIndex = 2;
+            this.decimalBarChart.Text = "cartesianChart2";
+            this.decimalBarChart.Visible = false;
             // 
             // button1
             // 
@@ -112,25 +137,25 @@
             this.button1.TabIndex = 3;
             this.button1.UseVisualStyleBackColor = true;
             // 
-            // cartesianChart2
+            // decimalPieChart
             // 
-            this.cartesianChart2.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cartesianChart2.Location = new System.Drawing.Point(0, 0);
-            this.cartesianChart2.Name = "cartesianChart2";
-            this.cartesianChart2.Size = new System.Drawing.Size(846, 471);
-            this.cartesianChart2.TabIndex = 2;
-            this.cartesianChart2.Text = "cartesianChart2";
-            this.cartesianChart2.Visible = false;
+            this.decimalPieChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.decimalPieChart.Location = new System.Drawing.Point(10, 10);
+            this.decimalPieChart.Name = "decimalPieChart";
+            this.decimalPieChart.Size = new System.Drawing.Size(826, 451);
+            this.decimalPieChart.TabIndex = 3;
+            this.decimalPieChart.Text = "cartesianChart2";
+            this.decimalPieChart.Visible = false;
             // 
-            // cartesianChart1
+            // stringPieChart
             // 
-            this.cartesianChart1.Cursor = System.Windows.Forms.Cursors.Cross;
-            this.cartesianChart1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cartesianChart1.Location = new System.Drawing.Point(10, 10);
-            this.cartesianChart1.Name = "cartesianChart1";
-            this.cartesianChart1.Size = new System.Drawing.Size(826, 451);
-            this.cartesianChart1.TabIndex = 1;
-            this.cartesianChart1.Text = "cartesianChart1";
+            this.stringPieChart.Cursor = System.Windows.Forms.Cursors.Cross;
+            this.stringPieChart.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stringPieChart.Location = new System.Drawing.Point(10, 10);
+            this.stringPieChart.Name = "stringPieChart";
+            this.stringPieChart.Size = new System.Drawing.Size(826, 451);
+            this.stringPieChart.TabIndex = 3;
+            this.stringPieChart.Text = "pieChart1";
             // 
             // Charts
             // 
@@ -162,7 +187,9 @@
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv1;
         private Syncfusion.Windows.Forms.Tools.TabPageAdv tabPageAdv2;
         private System.Windows.Forms.Button button1;
-        private LiveCharts.WinForms.CartesianChart cartesianChart1;
-        private LiveCharts.WinForms.CartesianChart cartesianChart2;
+        private LiveCharts.WinForms.CartesianChart stringBarChart;
+        private LiveCharts.WinForms.CartesianChart decimalBarChart;
+        private LiveCharts.WinForms.CartesianChart decimalPieChart;
+        private LiveCharts.WinForms.PieChart stringPieChart;
     }
 }
