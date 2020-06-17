@@ -17,6 +17,7 @@ Ich setze in meinem Projekt die folgenden 3rd Party Libraries ein:
 
 ## Installation [Jetzt Windows Installer herunterladen](https://www.alexander-b.de/repo/csv-verarbeitung/index.html)
 Die Installation des Programmes "CSV-Verarbeitung" findet durch den Visual Studio Veröffentlichungsprozess statt.
+Ich empfehle die Schriftart [Century Gothic](https://ttfonts.net/de/font/9410_CenturyGothic.htm).
 
 ## To-Do
 1. Import der beiligenden CSV-Datei ✓
