@@ -101,6 +101,7 @@ namespace CSV_Verarbeitung.Operations
                         file.WriteLine(UptoMain);
                         file.Close();
                         file.Dispose();
+                        MessageBoxProcessor.Show("Ihre Datei wurde erfolgreich gespeichert!" + Environment.NewLine + outputFile, "Datei erfolgreich gespeichert", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                     catch (ArgumentException e)
                     {
